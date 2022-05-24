@@ -27,6 +27,7 @@
                     android:id="@+id/antepasto_const"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="70dp"
                     android:clickable="true"
                     app:layout_constraintTop_toTopOf="parent">
 
