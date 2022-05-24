@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.MaterialComponents.DayNight.Dialog.bg" parent="Theme.AppCompat.DayNight.Dialog">
+        <item name="android:background">@color/material_dynamic_tertiary80</item>
+        <item name="android:buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
+        <item name="android:buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
+    </style>
+<!--Positive-->
+    <style name="PositiveButtonStyle" parent="ThemeOverlay.AppCompat.Dialog.Alert">
+        app:icon="@drawable/shop_add"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+    </style>
+    <!--Negative-->
+    <style name="NegativeButtonStyle" parent="ThemeOverlay.AppCompat.Dialog.Alert">
+        app:icon="@drawable/ic_add_24dp"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+    </style>
+    <!-- Bruschetta -->
+    <style name="Theme.MyItemImgBrus" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:src">@drawable/brus</item>
+    </style>
+    <style name="Theme.MyItemNameBrus" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:text">@string/bruschetta</item>
+    </style>
+    <style name="Theme.MyItemDescBrus" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:text">@string/bruschetta_desc</item>
+    </style>
+    <style name="Theme.MyItemPriceBrus" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:text">@string/bruschetta_price</item>
+    </style>
+    <!-- Melon -->
+    <style name="Theme.MyItemImgMelon" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:src">@drawable/melon</item>
+    </style>
+    <style name="Theme.MyItemNameMelon" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:text">@string/melon</item>
+    </style>
+    <style name="Theme.MyItemDescMelon" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:text">@string/melon_desc</item>
+    </style>
+    <style name="Theme.MyItemPriceMelon" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:text">@string/melon_price</item>
+    </style>
+    <!-- Mozza -->
+    <style name="Theme.MyItemImgMozza" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:src">@drawable/antecheese</item>
+    </style>
+    <style name="Theme.MyItemNameMozza" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:text">@string/anti_cheese</item>
+    </style>
+    <style name="Theme.MyItemDescMozza" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:text">@string/anti_cheese_desc</item>
+    </style>
+    <style name="Theme.MyItemPriceMozza" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:text">@string/anti_cheese_price</item>
+    </style>
+    <!-- Olives -->
+    <style name="Theme.MyItemImgOlives" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:src">@drawable/olives</item>
+    </style>
+    <style name="Theme.MyItemNameOlives" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:text">@string/olives</item>
+    </style>
+    <style name="Theme.MyItemDescOlives" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:text">@string/olives_desc</item>
+    </style>
+    <style name="Theme.MyItemPriceOlives" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:text">@string/olives_price</item>
+    </style>
+</resources>

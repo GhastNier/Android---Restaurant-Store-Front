@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Antipasto Price -->
+    <string name="bruschetta_price">5.99</string>
+    <string name="melon_price">6.99</string>
+    <string name="anti_cheese_price">8.99</string>
+    <string name="olives_price">7.99</string>
+    <!-- Steak Price -->
+    <string name="bistecca_price">29.99</string>
+    <string name="tagliata_price">41.99</string>
+    <string name="palermo_price">32.99</string>
+    <!-- Fresh Pasta Price -->
+    <string name="trofie_price">15.99</string>
+    <string name="chitarra_price">15.99</string>
+    <string name="ravioli_price">29.99</string>
+    <!-- Pizza Price -->
+    <string name="napoletana_price">11.99</string>
+    <string name="alla_pala_price">16.99</string>
+    <string name="tonda_price">7.99</string>
+    <string name="taglio_price">2.99</string>
+    <string name="fritta_price">21.99</string>
+    <string name="padellino_price">14.99</string>
+    <string name="siciliana_price">13.99</string>
+    <!-- Tiramisu Price -->
+</resources>

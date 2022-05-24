@@ -1,0 +1,62 @@
+<resources>
+    <string name="app_name">My Italian Restaurant</string>
+    <string name="action_settings">Cart</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">Main Menu</string>
+    <string name="second_fragment_label">Antipasto Menu</string>
+    <string name="steak_label">Steak Menu</string>
+    <string name="tiramisu_label">Tiramisu Menu</string>
+    <string name="fresh_pasta_label">Fresh Pasta Menu</string>
+    <string name="pizza_label">Pizza Menu</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="restaurant_items">Restaurant Items</string>
+    <!-- Menus -->
+    <string name="steak">Steak</string>
+    <string name="pasta">Pasta</string>
+    <string name="fresh_pasta">Fresh Pasta</string>
+    <string name="tiramisu">Tiramisu</string>
+    <string name="antipasto">Antipasto</string>
+    <string name="pizza">Pizza</string>
+    <string name="potato">Potato</string>
+    <string name="restaurant_menu">Restaurant Menu</string>
+    <!-- Antipasto -->
+    <string name="bruschetta">Bruschetta</string>
+    <string name="melon">Melon and Prosciutto</string>
+    <string name="anti_cheese">Mozzarina di Bufala</string>
+    <string name="olives">Marinated Cheese and Olives</string>
+    <!-- Steak -->
+    <string name="bistecca">Bistecca alla Fiorentina</string>
+    <string name="tagliata">Tagliata</string>
+    <string name="palermo">Palermo Style</string>
+    <!-- Pasta -->
+    <string name="trofie">Trofie</string>
+    <string name="chitarra">Chitarra</string>
+    <string name="ravioli">Raviolo al\'Uovo</string>
+    <!-- Pizza -->
+    <string name="napoletana">Napoletana</string>
+    <string name="alla_pala">Alla Pala</string>
+    <string name="tonda">Tonda Romana</string>
+    <string name="taglio">Al Taglio</string>
+    <string name="fritta">Fritta</string>
+    <string name="padellino">Al Padellino</string>
+    <string name="siciliana">Siciliana</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="add">Add</string>
+    <string name="cancel">Cancel</string>
+    <string name="dollar">$</string>
+    <string name="quantity">Quantity</string>
+    <string name="how_many">Qty.</string>
+    <string name="cancel_it">This is a cancellation</string>
+</resources>

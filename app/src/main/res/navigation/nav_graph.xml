@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/FirstFragment">
+
+    <fragment
+        android:id="@+id/FirstFragment"
+        android:name="com.example.myrestaurant.FirstFragment"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_first">
+
+        <action
+            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_steak"
+            app:destination="@id/steak" />
+        <action
+            android:id="@+id/action_FirstFragment_to_freshPasta"
+            app:destination="@id/freshPasta" />
+        <action
+            android:id="@+id/action_FirstFragment_to_tiramisu"
+            app:destination="@id/tiramisu" />
+        <action
+            android:id="@+id/action_FirstFragment_to_pizza"
+            app:destination="@id/pizza" />
+    </fragment>
+    <fragment
+        android:id="@+id/SecondFragment"
+        android:name="com.example.myrestaurant.SecondFragment"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/fragment_second">
+
+        <action
+            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_SecondFragment_to_itemDescription"
+            app:destination="@id/itemDescription" />
+    </fragment>
+    <fragment
+        android:id="@+id/steak"
+        android:name="com.example.myrestaurant.Steak"
+        android:label="Steak" >
+        <action
+            android:id="@+id/action_steak_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_steak_to_itemDescription"
+            app:destination="@id/itemDescription" />
+    </fragment>
+    <fragment
+        android:id="@+id/freshPasta"
+        android:name="com.example.myrestaurant.FreshPastaFrag"
+        android:label="FreshPasta" >
+        <action
+            android:id="@+id/action_freshPasta_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_freshPasta_to_itemDescription"
+            app:destination="@id/itemDescription" />
+    </fragment>
+    <fragment
+        android:id="@+id/tiramisu"
+        android:name="com.example.myrestaurant.Tiramisu"
+        android:label="Tiramisu" >
+        <action
+            android:id="@+id/action_tiramisu_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_tiramisu_to_itemDescription"
+            app:destination="@id/itemDescription" />
+    </fragment>
+    <fragment
+        android:id="@+id/pizza"
+        android:name="com.example.myrestaurant.Pizza"
+        android:label="Pizza" >
+        <action
+            android:id="@+id/action_pizza_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_pizza_to_itemDescription"
+            app:destination="@id/itemDescription" />
+    </fragment>
+    <dialog
+        android:id="@+id/itemDescription"
+        android:name="com.example.myrestaurant.ItemDescription"
+        android:label="ItemDescription" >
+        <action
+            android:id="@+id/action_itemDescription_to_pizza"
+            app:destination="@id/pizza" />
+        <action
+            android:id="@+id/action_itemDescription_to_steak"
+            app:destination="@id/steak" />
+        <action
+            android:id="@+id/action_itemDescription_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_itemDescription_to_tiramisu"
+            app:destination="@id/tiramisu" />
+        <action
+            android:id="@+id/action_itemDescription_to_freshPasta"
+            app:destination="@id/freshPasta" />
+    </dialog>
+</navigation>
