@@ -1,5 +1,5 @@
 package com.example.myrestaurant;
-
+import static com.example.myrestaurant.MainActivity.item;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,67 +13,52 @@ import com.example.myrestaurant.databinding.FragmentFirstBinding;
 
 public class FirstFragment extends Fragment {
 
-    private FragmentFirstBinding binding;
+    private FragmentFirstBinding firstBinding;
 
     @Override
     public View onCreateView(
-            LayoutInflater inflater, ViewGroup container,
+            @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
 
-        binding = FragmentFirstBinding.inflate(inflater, container, false);
-        return binding.getRoot();
+        firstBinding = FragmentFirstBinding.inflate(inflater, container, false);
+        return firstBinding.getRoot();
 
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        MainActivity.item = 0;
-        binding.antepastoConst.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MainActivity.item = 0;
-                NavHostFragment.findNavController(FirstFragment.this)
-                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
-            }
+        item = 0;
+        firstBinding.antepastoConst.setOnClickListener(view0 -> {
+            item = 0;
+            navigateTo(R.id.action_FirstFragment_to_SecondFragment);
         });
-        binding.pizzaConst.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MainActivity.item = 1;
-                NavHostFragment.findNavController(FirstFragment.this)
-                        .navigate(R.id.action_FirstFragment_to_pizza);
-            }
+        firstBinding.pizzaConst.setOnClickListener(view1 -> {
+            item = 1;
+            navigateTo(R.id.action_FirstFragment_to_pizza);
         });
-        binding.pastaConst.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MainActivity.item = 2;
-                NavHostFragment.findNavController(FirstFragment.this)
-                        .navigate(R.id.action_FirstFragment_to_freshPasta);
-            }
+        firstBinding.pastaConst.setOnClickListener(view2 -> {
+            item = 2;
+            navigateTo(R.id.action_FirstFragment_to_freshPasta);
         });
-        binding.tiramisuConst.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MainActivity.item = 3;
-                NavHostFragment.findNavController(FirstFragment.this)
-                        .navigate(R.id.action_FirstFragment_to_tiramisu);
-            }
+        firstBinding.tiramisuConst.setOnClickListener(view3 -> {
+            item = 3;
+            navigateTo(R.id.action_FirstFragment_to_tiramisu);
         });
-        binding.steakConst.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MainActivity.item = 4;
-                NavHostFragment.findNavController(FirstFragment.this)
-                        .navigate(R.id.action_FirstFragment_to_steak);
-            }
+        firstBinding.steakConst.setOnClickListener(view4 -> {
+            item = 4;
+            navigateTo(R.id.action_FirstFragment_to_steak);
         });
+    }
+
+    private void navigateTo(int frag) {
+        NavHostFragment.findNavController(FirstFragment.this)
+                .navigate(frag);
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        binding = null;
+        firstBinding = null;
     }
 }

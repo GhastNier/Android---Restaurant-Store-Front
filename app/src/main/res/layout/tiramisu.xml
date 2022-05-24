@@ -4,24 +4,88 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".Tiramisu">
 
-    <TextView
-        android:id="@+id/textview_second"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/button_second"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginBottom="5dp"/>
+        <TextView
+            android:id="@+id/firstItemTiramisu"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/title_dark"
+            android:clickable="true"
 
-    <Button
-        android:id="@+id/button_second"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/previous"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_second" />
+            android:paddingStart="15dp"
+            android:paddingEnd="0dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="@string/classic"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="5dp" />
+
+        <TextView
+            android:id="@+id/secondItemTiramisu"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/title_dark"
+            android:backgroundTintMode="screen"
+            android:clickable="true"
+
+            android:paddingStart="15dp"
+            android:paddingEnd="0dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="@string/deconst"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="5dp" />
+
+        <TextView
+            android:id="@+id/thirdItemTiramisu"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/title_dark"
+            android:clickable="true"
+
+            android:paddingStart="15dp"
+            android:paddingEnd="0dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="@string/cheese_cake"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="5dp" />
+
+        <TextView
+            android:id="@+id/fourthItemTiramisu"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/title_dark"
+            android:clickable="true"
+
+            android:paddingStart="15dp"
+            android:paddingEnd="0dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="@string/gelato"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

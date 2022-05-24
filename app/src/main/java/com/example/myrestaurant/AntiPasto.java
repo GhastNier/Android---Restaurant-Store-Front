@@ -11,11 +11,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.myrestaurant.databinding.FreshPastaBinding;
+import com.example.myrestaurant.databinding.AntiPastoBinding;
 
-public class FreshPastaFrag extends Fragment {
+public class AntiPasto extends Fragment {
 
-    private FreshPastaBinding fresh;
+    private AntiPastoBinding ap;
 
     @Override
     public View onCreateView(
@@ -23,36 +23,44 @@ public class FreshPastaFrag extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        fresh = FreshPastaBinding.inflate(inflater, container, false);
-        return fresh.getRoot();
+        ap = AntiPastoBinding.inflate(inflater, container, false);
+        return ap.getRoot();
 
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         subItem = 0;
-        fresh.firstItemPasta.setOnClickListener(view0 -> {
+        ap.firstItemAnti.setOnClickListener(view0 -> {
             subItem = 0;
             navigateTo();
+
         });
-        fresh.secondItemPasta.setOnClickListener(view1 -> {
+        ap.secondItemAnti.setOnClickListener(view1 -> {
             subItem = 1;
+
             navigateTo();
         });
-        fresh.thirdItemPasta.setOnClickListener(view2 -> {
+        ap.thirdItemAnti.setOnClickListener(view2 -> {
             subItem = 2;
+
+            navigateTo();
+
+        });
+        ap.fourthItemAnti.setOnClickListener(view3 -> {
+            subItem = 3;
             navigateTo();
         });
     }
 
     private void navigateTo() {
-        NavHostFragment.findNavController(FreshPastaFrag.this)
-                .navigate(R.id.action_freshPasta_to_itemDescription);
+        NavHostFragment.findNavController(AntiPasto.this)
+                .navigate(R.id.action_SecondFragment_to_itemDescription);
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        fresh = null;
+        ap = null;
     }
 }

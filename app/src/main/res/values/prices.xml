@@ -22,4 +22,8 @@
     <string name="padellino_price">14.99</string>
     <string name="siciliana_price">13.99</string>
     <!-- Tiramisu Price -->
+    <string name="classic_price">12.99</string>
+    <string name="deconst_price">15.99</string>
+    <string name="cheese_cake_price">12.99</string>
+    <string name="gelato_price">7.99</string>
 </resources>

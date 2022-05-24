@@ -21,4 +21,9 @@
     <string name="trofie_desc">These small, rolled pasta shapes are traditionally served the Genovese way with pesto, green beans and potatoes.</string>
     <string name="chitarra_desc">Chitarra means ‘guitar’, and this long thin pasta is cut using a harp-like tool. The fresh pasta dough is pushed through the fine strings to cut it into strands. Serve with silky cream- or oil-based sauces.</string>
     <string name="ravioli_desc">Large Raviolo with runny egg yolks.</string>
+    <!-- Tiramisu Description-->
+    <string name="classic_desc">Tiramisu is an espresso-flavored dessert. It\'s made of coffee-dipped ladyfingers with sweetened mascarpone cream and dusted with cocoa.</string>
+    <string name="deconst_desc">Mascarpone Mousse, Sponge Cake Soaked in Coffee, Espresso Gelee, Mascarpone Gelato, Coffee Foam, Espresso Glaze</string>
+    <string name="cheese_cake_desc">The Classical Tiramisù reinvented with a richer and creamier cream cheese filling</string>
+    <string name="gelato_desc">Hot summer day requires the fusion of the two greatest classic from Italian cuisine. Tiramisù and Gelato in one desert.</string>
 </resources>

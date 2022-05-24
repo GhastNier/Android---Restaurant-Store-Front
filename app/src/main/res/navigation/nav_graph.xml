@@ -13,7 +13,7 @@
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            app:destination="@id/AntiPasto" />
         <action
             android:id="@+id/action_FirstFragment_to_steak"
             app:destination="@id/steak" />
@@ -28,10 +28,10 @@
             app:destination="@id/pizza" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.myrestaurant.SecondFragment"
+        android:id="@+id/AntiPasto"
+        android:name="com.example.myrestaurant.AntiPasto"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        tools:layout="@layout/anti_pasto">
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
@@ -96,7 +96,7 @@
             app:destination="@id/steak" />
         <action
             android:id="@+id/action_itemDescription_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            app:destination="@id/AntiPasto" />
         <action
             android:id="@+id/action_itemDescription_to_tiramisu"
             app:destination="@id/tiramisu" />

@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -24,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
     boolean isLargeLayout;
     public static int itemNumber = 1000;
     public static final String cartKey = "cartKey";
-    public static final String count = "itemCount";
     public static ListMultimap<String, String> items;
     public static SharedPreferences cart;
     static int subItem = 0;
@@ -47,15 +44,6 @@ public class MainActivity extends AppCompatActivity {
 
         binding.fab.setOnClickListener(view -> Snackbar.make(view, "This is going to be the cart", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show());
-    }
-
-    public void showDialog() {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        ItemDescription newFragment = new ItemDescription();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-        transaction.add(android.R.id.content, newFragment)
-                .addToBackStack(null).commit();
     }
 }
 
