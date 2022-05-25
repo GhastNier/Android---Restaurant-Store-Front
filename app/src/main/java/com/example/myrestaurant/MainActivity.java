@@ -24,8 +24,24 @@ public class MainActivity extends AppCompatActivity {
     public static final String cartKey = "cartKey";
     public static ListMultimap<String, String> items;
     public static SharedPreferences cart;
-    static int subItem = 0;
-    static int item = 0;
+    private static int subItem;
+    private static String item;
+
+    public static int getSubItem() {
+        return subItem;
+    }
+
+    public static void setSubItem(int subItem) {
+        MainActivity.subItem = subItem;
+    }
+
+    public static String getItem() {
+        return item;
+    }
+
+    public static void setItem(String item) {
+        MainActivity.item = item;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

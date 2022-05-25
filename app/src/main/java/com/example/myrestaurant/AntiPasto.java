@@ -1,6 +1,6 @@
 package com.example.myrestaurant;
 
-import static com.example.myrestaurant.MainActivity.subItem;
+import static com.example.myrestaurant.MainActivity.setSubItem;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -30,25 +30,21 @@ public class AntiPasto extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        subItem = 0;
         ap.firstItemAnti.setOnClickListener(view0 -> {
-            subItem = 0;
+            setSubItem(10);
             navigateTo();
-
         });
         ap.secondItemAnti.setOnClickListener(view1 -> {
-            subItem = 1;
-
+            setSubItem(11);
             navigateTo();
         });
         ap.thirdItemAnti.setOnClickListener(view2 -> {
-            subItem = 2;
-
+            setSubItem(12);
             navigateTo();
 
         });
         ap.fourthItemAnti.setOnClickListener(view3 -> {
-            subItem = 3;
+            setSubItem(13);
             navigateTo();
         });
     }

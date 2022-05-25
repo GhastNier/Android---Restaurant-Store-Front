@@ -1,6 +1,6 @@
 package com.example.myrestaurant;
 
-import static com.example.myrestaurant.MainActivity.subItem;
+import static com.example.myrestaurant.MainActivity.setSubItem;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -30,17 +30,16 @@ public class Steak extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        subItem = 0;
         steak.firstItemSteak.setOnClickListener(view1 -> {
-            subItem = 0;
+            setSubItem(20);
             navigateTo();
         });
         steak.secondItemSteak.setOnClickListener(view12 -> {
-            subItem = 1;
+            setSubItem(21);
             navigateTo();
         });
         steak.thirdItemSteak.setOnClickListener(view13 -> {
-            subItem = 2;
+            setSubItem(22);
             navigateTo();
         });
     }

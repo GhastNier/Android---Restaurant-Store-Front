@@ -1,5 +1,5 @@
 package com.example.myrestaurant;
-import static com.example.myrestaurant.MainActivity.subItem;
+import static com.example.myrestaurant.MainActivity.setSubItem;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,21 +28,20 @@ public class Tiramisu extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        subItem = 0;
         dessert.firstItemTiramisu.setOnClickListener(view0 -> {
-            subItem = 0;
+            setSubItem(50);
             navigateTo();
         });
         dessert.secondItemTiramisu.setOnClickListener(view1 -> {
-            subItem = 1;
+            setSubItem(51);
             navigateTo();
         });
         dessert.thirdItemTiramisu.setOnClickListener(view2 -> {
-            subItem = 2;
+            setSubItem(52);
             navigateTo();
         });
         dessert.fourthItemTiramisu.setOnClickListener(view3 -> {
-            subItem = 3;
+            setSubItem(53);
             navigateTo();
         });
     }

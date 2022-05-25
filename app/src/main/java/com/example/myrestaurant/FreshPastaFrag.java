@@ -1,6 +1,6 @@
 package com.example.myrestaurant;
 
-import static com.example.myrestaurant.MainActivity.subItem;
+import static com.example.myrestaurant.MainActivity.setSubItem;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -30,17 +30,16 @@ public class FreshPastaFrag extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        subItem = 0;
         fresh.firstItemPasta.setOnClickListener(view0 -> {
-            subItem = 0;
+            setSubItem(30);
             navigateTo();
         });
         fresh.secondItemPasta.setOnClickListener(view1 -> {
-            subItem = 1;
+            setSubItem(31);
             navigateTo();
         });
         fresh.thirdItemPasta.setOnClickListener(view2 -> {
-            subItem = 2;
+            setSubItem(32);
             navigateTo();
         });
     }

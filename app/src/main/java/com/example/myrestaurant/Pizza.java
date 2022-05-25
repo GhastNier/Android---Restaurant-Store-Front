@@ -1,5 +1,5 @@
 package com.example.myrestaurant;
-import static com.example.myrestaurant.MainActivity.subItem;
+import static com.example.myrestaurant.MainActivity.setSubItem;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,34 +28,33 @@ public class Pizza extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        subItem = 0;
         pizza.firstItemPizza.setOnClickListener(view0 -> {
-            subItem = 0;
+            setSubItem(40);
             navigateTo();
         });
         pizza.secondItemPizza.setOnClickListener(view1 -> {
-            subItem = 1;
+            setSubItem(41);
             navigateTo();
         });
         pizza.thirdItemPizza.setOnClickListener(view2 -> {
-            subItem = 2;
+            setSubItem(42);
             navigateTo();
 
         });
         pizza.fourthItemPizza.setOnClickListener(view3 -> {
-            subItem = 3;
+            setSubItem(43);
             navigateTo();
         });
         pizza.fifthItemPizza.setOnClickListener(view4 -> {
-            subItem = 4;
+            setSubItem(44);
             navigateTo();
         });
         pizza.sixthItemPizza.setOnClickListener(view5 -> {
-            subItem = 5;
+            setSubItem(45);
             navigateTo();
         });
         pizza.seventhItemPizza.setOnClickListener(view6 -> {
-            subItem = 6;
+            setSubItem(46);
             navigateTo();
         });
     }

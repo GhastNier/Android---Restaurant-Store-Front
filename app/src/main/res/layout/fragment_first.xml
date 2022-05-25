@@ -201,7 +201,6 @@
                         android:layout_height="250dp"
                         android:contentDescription="@string/tiramisu"
                         android:scaleType="centerCrop"
-
                         android:src="@drawable/tiramisu"
                         app:layout_constraintTop_toTopOf="parent" />
 

@@ -1,5 +1,7 @@
 package com.example.myrestaurant;
-import static com.example.myrestaurant.MainActivity.item;
+
+import static com.example.myrestaurant.MainActivity.setItem;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,25 +30,25 @@ public class FirstFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        item = 0;
+        setItem("");
         firstBinding.antepastoConst.setOnClickListener(view0 -> {
-            item = 0;
-            navigateTo(R.id.action_FirstFragment_to_SecondFragment);
+            setItem("anti");
+            navigateTo(R.id.action_FirstFragment_to_AntiPasto);
         });
         firstBinding.pizzaConst.setOnClickListener(view1 -> {
-            item = 1;
+            setItem("pizza");
             navigateTo(R.id.action_FirstFragment_to_pizza);
         });
         firstBinding.pastaConst.setOnClickListener(view2 -> {
-            item = 2;
+            setItem("pasta");
             navigateTo(R.id.action_FirstFragment_to_freshPasta);
         });
         firstBinding.tiramisuConst.setOnClickListener(view3 -> {
-            item = 3;
+            setItem("dessert");
             navigateTo(R.id.action_FirstFragment_to_tiramisu);
         });
         firstBinding.steakConst.setOnClickListener(view4 -> {
-            item = 4;
+            setItem("steak");
             navigateTo(R.id.action_FirstFragment_to_steak);
         });
     }
