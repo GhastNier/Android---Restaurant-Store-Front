@@ -1,6 +1,6 @@
 package com.example.myrestaurant;
 
-import static com.example.myrestaurant.MainActivity.setSubItem;
+import static com.example.myrestaurant.GetterAndSetter.setSubItem;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -30,28 +30,35 @@ public class AntiPasto extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        MainActivity.fabVisibilityOn(ap.fabAnti);
         ap.firstItemAnti.setOnClickListener(view0 -> {
             setSubItem(10);
-            navigateTo();
+            navigateTo(R.id.action_SecondFragment_to_itemDescription);
         });
         ap.secondItemAnti.setOnClickListener(view1 -> {
             setSubItem(11);
-            navigateTo();
+            navigateTo(R.id.action_SecondFragment_to_itemDescription);
         });
         ap.thirdItemAnti.setOnClickListener(view2 -> {
             setSubItem(12);
-            navigateTo();
+            navigateTo(R.id.action_SecondFragment_to_itemDescription);
 
         });
         ap.fourthItemAnti.setOnClickListener(view3 -> {
             setSubItem(13);
-            navigateTo();
+            navigateTo(R.id.action_SecondFragment_to_itemDescription);
+        });
+        ap.fabAnti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigateTo(R.id.action_FirstFragment_to_cartView);
+                MainActivity.fabVisibilityOff(view);
+            }
         });
     }
-
-    private void navigateTo() {
-        NavHostFragment.findNavController(AntiPasto.this)
-                .navigate(R.id.action_SecondFragment_to_itemDescription);
+    private void navigateTo(int frag) {
+        NavHostFragment.findNavController(this)
+                .navigate(frag);
     }
 
     @Override

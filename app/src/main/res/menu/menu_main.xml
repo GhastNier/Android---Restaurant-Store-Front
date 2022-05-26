@@ -1,15 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.myrestaurant.MainActivity">
-    <item android:title="@string/restaurant_menu" >
-        <menu >
-
-            <item android:id="@+id/_1" android:title="@string/antipasto" android:onClick="menuOnClick"/>
-            <item android:id="@+id/_2" android:title="@string/steak" />
-            <item android:id="@+id/_3" android:title="@string/fresh_pasta" />
-            <item android:id="@+id/_4" android:title="@string/pizza" />
-            <item android:id="@+id/_5" android:title="@string/tiramisu" />
-        </menu>
-    </item>
+    tools:context=".MainActivity">
+    <item android:id="@+id/clear" android:title="@string/clear_cart"/>
+    <item android:id="@+id/view_cart" android:title="@string/view_cart"/>
 </menu>

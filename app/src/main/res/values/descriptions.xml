@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Antipasto Description-->
-    <string name="bruschetta_desc">A popular dish is bruschetta with tomatoes; one recipe popular outside Italy involves basil, fresh tomato, garlic and onion or mozzarella. Bruschetta is usually served as a snack or appetizer. In some countries, the prepared topping is marketed as bruschetta.</string>
-    <string name="melon_desc">Prosciutto Crudo served with fresh melon and figs</string>
-    <string name="anti_cheese_desc">Cheese plate consisting of our best Mozarrina di Buffala and fresh tomatoes</string>
-    <string name="olives_desc">A marinated disc of Olives and Provolone Cheese. With oils, herbs and peppers</string>
+    <string name="bruschetta_desc" translatable="false">A popular dish is bruschetta with tomatoes; one recipe popular outside Italy involves basil, fresh tomato, garlic and onion or mozzarella. Bruschetta is usually served as a snack or appetizer. In some countries, the prepared topping is marketed as bruschetta.</string>
+    <string name="melon_desc" translatable="false">Prosciutto Crudo served with fresh melon and figs</string>
+    <string name="anti_cheese_desc" translatable="false">Cheese plate consisting of our best Mozarrina di Buffala and fresh tomatoes</string>
+    <string name="olives_desc" translatable="false">A marinated disc of Olives and Provolone Cheese. With oils, herbs and peppers</string>
     <!-- Steak Description -->
-    <string name="bistecca_desc">The steak is typically from Chianina cattle — an ancient Tuscan breed known for its prized and tasty meat — seasoned with local spices and grilled over red-hot coals. It’s traditionally served “rare,” but we won’t judge if you ask for medium. (Not too much, anyway).</string>
-    <string name="tagliata_desc">Tagliata is one of Italy\'s most popular steak dishes. Tagliata is a boneless piece of grilled beef, served in slices.</string>
-    <string name="palermo_desc">No marinade, simply rubbed with olive oil and seasoned well with salt + pepper, then seared to perfection on a cast iron pan/griddle before finishing it under the broiler with a caper, garlic, anchovy and bread crumb topping. </string>
+    <string name="bistecca_desc" translatable="false">The steak is typically from Chianina cattle — an ancient Tuscan breed known for its prized and tasty meat — seasoned with local spices and grilled over red-hot coals. It’s traditionally served “rare,” but we won’t judge if you ask for medium. (Not too much, anyway).</string>
+    <string name="tagliata_desc" translatable="false">Tagliata is one of Italy\'s most popular steak dishes. Tagliata is a boneless piece of grilled beef, served in slices.</string>
+    <string name="palermo_desc" translatable="false">No marinade, simply rubbed with olive oil and seasoned well with salt + pepper, then seared to perfection on a cast iron pan/griddle before finishing it under the broiler with a caper, garlic, anchovy and bread crumb topping. </string>
     <!-- Pizza Description-->
-    <string name="napoletana_desc"> The result is a soft, elastic heart with a tall, fluffy crust called the cornicione in Italian. You can find this variety and many flavours.</string>
-    <string name="alla_pala_desc">Unlike pizza Napoletana, this style has a highly-hydrated dough (about 80% water) and is cooked in an electric oven around 580°F. Served on a wood paddle with your choice of Ingredients.</string>
-    <string name="tonda_desc">This kind is flat and round and it has a very thin crust. Unlike pizza Napoletana, this style is crispy and has an almost cracker-like crust!</string>
-    <string name="taglio_desc">Have the pizza of your dream, to go and by the Weight.</string>
-    <string name="fritta_desc">A classic Neapolitan street food, pizza fritta is fried pizza dough. It comes in many different shapes and forms. This one comes with Artichoke, Mozzarella, Ricotta and Tomatoes</string>
-    <string name="padellino_desc">Type of pizza that\'s baked in small, round pans. Think of it like Italian-style "deep dish." Typically served in Torino, pizza al padellino has a thick soft crust, that gets slightly browned on the outside when baking. It can be topped with a variety of ingredients, from prosciutto to mozzarella.</string>
-    <string name="siciliana_desc"> Sicilian-style pizza has a thick crust with a fluffy, sponge-like consistency. It is baked in a rectangular shaped pan, topped with tomato sauce, anchovies, onions, oregano, and a hard sheep\'s milk cheese. For the final touch, the pizza is covered in breadcrumbs which help absorb some of the oil from the ingredient.</string>
+    <string name="napoletana_desc" translatable="false"> The result is a soft, elastic heart with a tall, fluffy crust called the cornicione in Italian. You can find this variety and many flavours.</string>
+    <string name="alla_pala_desc" translatable="false">Unlike pizza Napoletana, this style has a highly-hydrated dough (about 80% water) and is cooked in an electric oven around 580°F. Served on a wood paddle with your choice of Ingredients.</string>
+    <string name="tonda_desc" translatable="false">This kind is flat and round and it has a very thin crust. Unlike pizza Napoletana, this style is crispy and has an almost cracker-like crust!</string>
+    <string name="taglio_desc" translatable="false">Have the pizza of your dream, to go and by the Weight.</string>
+    <string name="fritta_desc" translatable="false">A classic Neapolitan street food, pizza fritta is fried pizza dough. It comes in many different shapes and forms. This one comes with Artichoke, Mozzarella, Ricotta and Tomatoes</string>
+    <string name="padellino_desc" translatable="false">Type of pizza that\'s baked in small, round pans. Think of it like Italian-style "deep dish." Typically served in Torino, pizza al padellino has a thick soft crust, that gets slightly browned on the outside when baking. It can be topped with a variety of ingredients, from prosciutto to mozzarella.</string>
+    <string name="siciliana_desc" translatable="false"> Sicilian-style pizza has a thick crust with a fluffy, sponge-like consistency. It is baked in a rectangular shaped pan, topped with tomato sauce, anchovies, onions, oregano, and a hard sheep\'s milk cheese. For the final touch, the pizza is covered in breadcrumbs which help absorb some of the oil from the ingredient.</string>
     <!-- Fresh Pasta Description -->
-    <string name="trofie_desc">These small, rolled pasta shapes are traditionally served the Genovese way with pesto, green beans and potatoes.</string>
-    <string name="chitarra_desc">Chitarra means ‘guitar’, and this long thin pasta is cut using a harp-like tool. The fresh pasta dough is pushed through the fine strings to cut it into strands. Serve with silky cream- or oil-based sauces.</string>
-    <string name="ravioli_desc">Large Raviolo with runny egg yolks.</string>
+    <string name="trofie_desc" translatable="false">These small, rolled pasta shapes are traditionally served the Genovese way with pesto, green beans and potatoes.</string>
+    <string name="chitarra_desc" translatable="false">Chitarra means ‘guitar’, and this long thin pasta is cut using a harp-like tool. The fresh pasta dough is pushed through the fine strings to cut it into strands. Serve with silky cream- or oil-based sauces.</string>
+    <string name="ravioli_desc" translatable="false">Large Raviolo with runny egg yolks.</string>
     <!-- Tiramisu Description-->
-    <string name="classic_desc">Tiramisu is an espresso-flavored dessert. It\'s made of coffee-dipped ladyfingers with sweetened mascarpone cream and dusted with cocoa.</string>
-    <string name="deconst_desc">Mascarpone Mousse, Sponge Cake Soaked in Coffee, Espresso Gelee, Mascarpone Gelato, Coffee Foam, Espresso Glaze</string>
-    <string name="cheese_cake_desc">The Classical Tiramisù reinvented with a richer and creamier cream cheese filling</string>
-    <string name="gelato_desc">Hot summer day requires the fusion of the two greatest classic from Italian cuisine. Tiramisù and Gelato in one desert.</string>
+    <string name="classic_desc" translatable="false">Tiramisu is an espresso-flavored dessert. It\'s made of coffee-dipped ladyfingers with sweetened mascarpone cream and dusted with cocoa.</string>
+    <string name="deconst_desc" translatable="false">Mascarpone Mousse, Sponge Cake Soaked in Coffee, Espresso Gelee, Mascarpone Gelato, Coffee Foam, Espresso Glaze</string>
+    <string name="cheese_cake_desc" translatable="false">The Classical Tiramisù reinvented with a richer and creamier cream cheese filling</string>
+    <string name="gelato_desc" translatable="false">Hot summer day requires the fusion of the two greatest classic from Italian cuisine. Tiramisù and Gelato in one desert.</string>
 </resources>

@@ -4,13 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/FirstFragment">
-
     <fragment
         android:id="@+id/FirstFragment"
         android:name="com.example.myrestaurant.FirstFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first">
-
         <action
             android:id="@+id/action_FirstFragment_to_AntiPasto"
             app:destination="@id/AntiPasto" />
@@ -26,6 +24,9 @@
         <action
             android:id="@+id/action_FirstFragment_to_pizza"
             app:destination="@id/pizza" />
+        <action
+            android:id="@+id/action_FirstFragment_to_cartView"
+            app:destination="@id/cartView" />
     </fragment>
     <fragment
         android:id="@+id/AntiPasto"
@@ -38,25 +39,34 @@
             app:destination="@id/itemDescription" />
         <action
             android:id="@+id/action_AntiPasto_pop"
-            app:popUpTo="@id/AntiPasto"
-            app:popUpToInclusive="true" />
+            app:destination="@id/FirstFragment"
+            app:popUpTo="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_AntiPasto_to_cartView"
+            app:destination="@id/cartView" />
     </fragment>
     <fragment
         android:id="@+id/steak"
         android:name="com.example.myrestaurant.Steak"
-        android:label="Steak" >
+        android:label="@string/steak_menu"
+        tools:layout="@layout/steak">
         <action
             android:id="@+id/action_steak_to_itemDescription"
             app:destination="@id/itemDescription" />
         <action
             android:id="@+id/action_steak_pop"
-            app:popUpTo="@id/steak"
+            app:destination="@id/FirstFragment"
+            app:popUpTo="@id/FirstFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_steak_to_cartView"
+            app:destination="@id/cartView" />
     </fragment>
     <fragment
         android:id="@+id/freshPasta"
         android:name="com.example.myrestaurant.FreshPastaFrag"
-        android:label="FreshPasta" >
+        android:label="@string/frestpasta"
+        tools:layout="@layout/fresh_pasta">
         <action
             android:id="@+id/action_freshPasta_to_itemDescription"
             app:destination="@id/itemDescription" />
@@ -64,38 +74,61 @@
             android:id="@+id/action_freshPasta_pop"
             app:popUpTo="@id/freshPasta"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_freshPasta_to_cartView"
+            app:destination="@id/cartView" />
     </fragment>
     <fragment
         android:id="@+id/tiramisu"
         android:name="com.example.myrestaurant.Tiramisu"
-        android:label="Tiramisu" >
+        android:label="@string/tiramenu"
+        tools:layout="@layout/tiramisu">
         <action
             android:id="@+id/action_tiramisu_to_itemDescription"
             app:destination="@id/itemDescription" />
         <action
             android:id="@+id/action_tiramisu_pop2"
-            app:popUpTo="@id/tiramisu"
-            app:popUpToInclusive="true" />
+            app:destination="@id/FirstFragment"
+            app:popUpTo="@id/FirstFragment"
+            />
+        <action
+            android:id="@+id/action_tiramisu_to_cartView"
+            app:destination="@id/cartView" />
     </fragment>
     <fragment
         android:id="@+id/pizza"
         android:name="com.example.myrestaurant.Pizza"
-        android:label="Pizza" >
+        android:label="@string/pizza_menu"
+        tools:layout="@layout/pizza">
         <action
             android:id="@+id/action_pizza_to_itemDescription"
             app:destination="@id/itemDescription" />
         <action
             android:id="@+id/action_pizza_pop"
-            app:popUpTo="@id/pizza"
-            app:popUpToInclusive="true" />
+            app:popUpTo="@id/FirstFragment"
+            />
+        <action
+            android:id="@+id/action_pizza_to_cartView"
+            app:destination="@id/cartView" />
     </fragment>
     <dialog
         android:id="@+id/itemDescription"
         android:name="com.example.myrestaurant.ItemDescription"
-        android:label="ItemDescription" >
+        android:label="ItemDescription"
+        tools:layout="@layout/item_description">
         <action
             android:id="@+id/action_itemDescription_pop"
             app:popUpTo="@id/itemDescription"
+            app:popUpToInclusive="true" />
+    </dialog>
+    <dialog
+        android:id="@+id/cartView"
+        android:name="com.example.myrestaurant.CartView"
+        android:label="CartView"
+        tools:layout="@layout/cartview" >
+        <action
+            android:id="@+id/action_cartView_pop"
+            app:popUpTo="@id/cartView"
             app:popUpToInclusive="true" />
     </dialog>
 </navigation>

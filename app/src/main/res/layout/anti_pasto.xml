@@ -8,23 +8,27 @@
     tools:context=".AntiPasto">
 
     <LinearLayout
+
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <Space
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:layout_marginBottom="5dp"/>
+            android:layout_marginBottom="5dp" />
+
         <TextView
             android:id="@+id/firstItemAnti"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/title_dark"
             android:clickable="true"
-            
+
             android:paddingStart="15dp"
-            android:paddingEnd="0dp"
             android:paddingTop="5dp"
+            android:paddingEnd="0dp"
             android:paddingBottom="5dp"
             android:text="@string/bruschetta"
             android:textColor="@color/white"
@@ -41,10 +45,10 @@
             android:background="@color/title_dark"
             android:backgroundTintMode="screen"
             android:clickable="true"
-            
+
             android:paddingStart="15dp"
-            android:paddingEnd="0dp"
             android:paddingTop="5dp"
+            android:paddingEnd="0dp"
             android:paddingBottom="5dp"
             android:text="@string/melon"
             android:textColor="@color/white"
@@ -60,14 +64,15 @@
             android:layout_height="50dp"
             android:background="@color/title_dark"
             android:clickable="true"
-            
+
             android:paddingStart="15dp"
-            android:paddingEnd="0dp"
             android:paddingTop="5dp"
+            android:paddingEnd="0dp"
             android:paddingBottom="5dp"
             android:text="@string/anti_cheese"
             android:textColor="@color/white"
             android:textSize="25sp" />
+
         <Space
             android:layout_width="match_parent"
             android:layout_height="5dp" />
@@ -78,14 +83,34 @@
             android:layout_height="50dp"
             android:background="@color/title_dark"
             android:clickable="true"
-            
+
             android:paddingStart="15dp"
-            android:paddingEnd="0dp"
             android:paddingTop="5dp"
+            android:paddingEnd="0dp"
             android:paddingBottom="5dp"
             android:text="@string/olives"
             android:textColor="@color/white"
             android:textSize="25sp" />
     </LinearLayout>
-
+    <RelativeLayout
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:gravity="bottom|end"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAnti"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:backgroundTint="@color/secondaryDarkColor"
+        android:contentDescription="@string/action_settings"
+        app:backgroundTint="@color/trans"
+        app:srcCompat="@drawable/ic_cart"
+        tools:layout_editor_absoluteX="339dp"
+        tools:layout_editor_absoluteY="659dp" />
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,4 +17,6 @@
         <color name="primaryTextColor">#ffffff</color>
         <color name="secondaryTextColor">#ffffff</color>
     <color name="title_dark">#7A1919</color>
+    <color name="hint">#616161</color>
+    <color name="background_trans">#805E0000</color>
 </resources>

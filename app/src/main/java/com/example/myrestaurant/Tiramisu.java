@@ -1,5 +1,8 @@
 package com.example.myrestaurant;
-import static com.example.myrestaurant.MainActivity.setSubItem;
+
+import static com.example.myrestaurant.GetterAndSetter.setSubItem;
+import static com.example.myrestaurant.MainActivity.fabVisibilityOn;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,29 +31,35 @@ public class Tiramisu extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        fabVisibilityOn(dessert.fabTira);
         dessert.firstItemTiramisu.setOnClickListener(view0 -> {
             setSubItem(50);
-            navigateTo();
+            navigateTo(R.id.action_tiramisu_to_itemDescription);
         });
         dessert.secondItemTiramisu.setOnClickListener(view1 -> {
             setSubItem(51);
-            navigateTo();
+            navigateTo(R.id.action_tiramisu_to_itemDescription);
         });
         dessert.thirdItemTiramisu.setOnClickListener(view2 -> {
             setSubItem(52);
-            navigateTo();
+            navigateTo(R.id.action_tiramisu_to_itemDescription);
         });
         dessert.fourthItemTiramisu.setOnClickListener(view3 -> {
             setSubItem(53);
-            navigateTo();
+            navigateTo(R.id.action_tiramisu_to_itemDescription);
+        });
+        dessert.fabTira.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigateTo(R.id.action_tiramisu_to_cartView);
+                MainActivity.fabVisibilityOff(view);
+            }
         });
     }
-
-    private void navigateTo() {
-        NavHostFragment.findNavController(Tiramisu.this)
-                .navigate(R.id.action_tiramisu_to_itemDescription);
+    private void navigateTo(int frag) {
+        NavHostFragment.findNavController(this)
+                .navigate(frag);
     }
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();

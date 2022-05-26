@@ -1,6 +1,6 @@
 package com.example.myrestaurant;
 
-import static com.example.myrestaurant.MainActivity.setSubItem;
+import static com.example.myrestaurant.GetterAndSetter.setSubItem;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -32,21 +32,27 @@ public class Steak extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         steak.firstItemSteak.setOnClickListener(view1 -> {
             setSubItem(20);
-            navigateTo();
+            navigateTo(R.id.action_steak_to_itemDescription);
         });
         steak.secondItemSteak.setOnClickListener(view12 -> {
             setSubItem(21);
-            navigateTo();
+            navigateTo(R.id.action_steak_to_itemDescription);
         });
         steak.thirdItemSteak.setOnClickListener(view13 -> {
             setSubItem(22);
-            navigateTo();
+            navigateTo(R.id.action_steak_to_itemDescription);
+        });
+        steak.fabSteak.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigateTo(R.id.action_steak_to_cartView);
+                MainActivity.fabVisibilityOff(view);
+            }
         });
     }
-
-    private void navigateTo() {
-        NavHostFragment.findNavController(Steak.this)
-                .navigate(R.id.action_steak_to_itemDescription);
+    private void navigateTo(int frag) {
+        NavHostFragment.findNavController(this)
+                .navigate(frag);
     }
 
     @Override

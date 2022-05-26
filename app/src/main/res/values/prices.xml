@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Antipasto Price -->
-    <string name="bruschetta_price">5.99</string>
-    <string name="melon_price">6.99</string>
-    <string name="anti_cheese_price">8.99</string>
-    <string name="olives_price">7.99</string>
+    <string name="bruschetta_price" translatable="false">5.99</string>
+    <string name="melon_price" translatable="false">6.99</string>
+    <string name="anti_cheese_price" translatable="false">8.99</string>
+    <string name="olives_price" translatable="false">7.99</string>
     <!-- Steak Price -->
-    <string name="bistecca_price">29.99</string>
-    <string name="tagliata_price">41.99</string>
-    <string name="palermo_price">32.99</string>
+    <string name="bistecca_price" translatable="false">29.99</string>
+    <string name="tagliata_price" translatable="false">41.99</string>
+    <string name="palermo_price" translatable="false">32.99</string>
     <!-- Fresh Pasta Price -->
     <string name="trofie_price">15.99</string>
     <string name="chitarra_price">15.99</string>

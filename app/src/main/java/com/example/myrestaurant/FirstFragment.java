@@ -1,6 +1,7 @@
 package com.example.myrestaurant;
 
-import static com.example.myrestaurant.MainActivity.setItem;
+import static com.example.myrestaurant.GetterAndSetter.setItem;
+import static com.example.myrestaurant.MainActivity.fabVisibilityOn;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -31,6 +32,7 @@ public class FirstFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setItem("");
+        fabVisibilityOn(firstBinding.fabMain);
         firstBinding.antepastoConst.setOnClickListener(view0 -> {
             setItem("anti");
             navigateTo(R.id.action_FirstFragment_to_AntiPasto);
@@ -51,16 +53,25 @@ public class FirstFragment extends Fragment {
             setItem("steak");
             navigateTo(R.id.action_FirstFragment_to_steak);
         });
+        firstBinding.fabMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigateTo(R.id.action_FirstFragment_to_cartView);
+                MainActivity.fabVisibilityOff(view);
+            }
+    });
     }
 
     private void navigateTo(int frag) {
         NavHostFragment.findNavController(FirstFragment.this)
                 .navigate(frag);
     }
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         firstBinding = null;
+    }
+    public void fabVisibilityOff(View view) {
+        view.setVisibility(View.INVISIBLE);
     }
 }

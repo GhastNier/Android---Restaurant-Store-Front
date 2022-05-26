@@ -1,12 +1,17 @@
 package com.example.myrestaurant;
 
+import static com.example.myrestaurant.GetterAndSetter.getItem;
+import static com.example.myrestaurant.GetterAndSetter.getItemNumber;
+import static com.example.myrestaurant.GetterAndSetter.getSubItem;
+import static com.example.myrestaurant.GetterAndSetter.getTotalValue;
+import static com.example.myrestaurant.GetterAndSetter.setItemNumber;
+import static com.example.myrestaurant.GetterAndSetter.setSubItem;
+import static com.example.myrestaurant.GetterAndSetter.setTotalValue;
 import static com.example.myrestaurant.MainActivity.cart;
 import static com.example.myrestaurant.MainActivity.cartKey;
-import static com.example.myrestaurant.MainActivity.getItem;
-import static com.example.myrestaurant.MainActivity.getSubItem;
-import static com.example.myrestaurant.MainActivity.itemNumber;
 import static com.example.myrestaurant.MainActivity.items;
-import static com.example.myrestaurant.MainActivity.setSubItem;
+import static com.example.myrestaurant.MainActivity.itemsList;
+import static com.example.myrestaurant.MainActivity.onCartChange;
 import static java.lang.String.valueOf;
 
 import android.content.SharedPreferences;
@@ -30,9 +35,8 @@ import com.google.android.material.snackbar.Snackbar;
 public class ItemDescription extends DialogFragment {
     public ItemDescriptionBinding idb;
     int canOrAdd;
-    String itemName;
     double price;
-    private static final DecimalFormat df = new DecimalFormat("0.00");
+    public static final DecimalFormat df = new DecimalFormat("0.00");
 
     @Override
     public View onCreateView(
@@ -46,30 +50,9 @@ public class ItemDescription extends DialogFragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setDialog(getItem(), getSubItem());
-        SharedPreferences.Editor cartSetter = cart.edit();
         idb.addToCart.setOnClickListener(view0 -> {
             canOrAdd = 0;
-            EditText editText = (EditText) idb.qty;
-            int itemQty = Integer.parseInt(editText.getText().toString());
-            try {
-                if (itemQty > 0) {
-                    String current = String.valueOf(itemNumber);
-                    double sum = price * itemQty;
-                    Log.println(Log.INFO, "The sum of price * quantity ", valueOf(df.format(sum)));
-                    Snackbar.make(getActivity().findViewById(R.id.snack_text), "You've added " + Integer.parseInt(valueOf(itemQty)) + " " + itemName + " to your Cart." +
-                            "\nFor a total of " + df.format(sum), Snackbar.LENGTH_LONG).show();
-                    cartSetter.putString(cartKey, df.format(Double.parseDouble(cart.getString(cartKey, "")) + sum)).apply();
-                    addItemToMulti(current, itemName, String.valueOf(itemQty), df.format(price), df.format(sum));
-                    Log.println(Log.INFO, "Item:", items.get(current).toString());
-                    Log.println(Log.INFO, "All Items:", items.toString());
-                    setID();
-                } else {
-                    makeToastZero();
-                }
-            } catch (IllegalArgumentException e) {
-                makeToastZero();
-            }
-            closeDialog();
+            cartSetter();
         });
         idb.cancel.setOnClickListener(view1 -> {
             canOrAdd = 1;
@@ -81,12 +64,21 @@ public class ItemDescription extends DialogFragment {
         Toast.makeText(getDialog().getContext(), "Sorry 0 isn't a valid quantity.", Toast.LENGTH_SHORT).show();
     }
 
-    private void addItemToMulti(String current, String itemName, String qty, String cost, String sum) {
+    private void addItemToMulti(String current, String itemName, String qty, String
+            cost, String sum) {
         items.put(current, current);
         items.put(current, itemName);
         items.put(current, qty);
         items.put(current, cost);
         items.put(current, sum);
+        if(getTotalValue() == 0)
+        {
+        setTotalValue(Double.parseDouble(sum));
+        onCartChange();
+        } else {
+            setTotalValue(getTotalValue() + Double.parseDouble(sum));
+            onCartChange();
+        }
     }
 
     public void setDialog(String item, int subItem) {
@@ -262,8 +254,8 @@ public class ItemDescription extends DialogFragment {
     }
 
     private String setID() {
-        itemNumber++;
-        return valueOf(itemNumber);
+        setItemNumber(getItemNumber()+1);
+        return valueOf(getItemNumber());
     }
 
     private void navigateTo(int frag) {
@@ -275,5 +267,38 @@ public class ItemDescription extends DialogFragment {
     public void onDestroyView() {
         super.onDestroyView();
         idb = null;
+    }
+
+    private void cartSetter() {
+        EditText editText = (EditText) idb.qty;
+        SharedPreferences.Editor cartSetter = cart.edit();
+        try {
+            int itemQty = Integer.parseInt(editText.getText().toString());
+            if (itemQty > 0) {
+                String itemName = idb.itemName.getText().toString();
+                String current = String.valueOf(getItemNumber());
+                double sum = price * itemQty;
+                Log.println(Log.INFO, "The sum of price * quantity ", valueOf(df.format(sum)));
+                Snackbar.make(getActivity().findViewById(R.id.snack_text), "You've added " + Integer.parseInt(valueOf(itemQty)) + " " + itemName + " to your Cart." +
+                        "\nFor a total of " + df.format(sum), Snackbar.LENGTH_LONG).show();
+                cartSetter.putString(cartKey, df.format(Double.parseDouble(cart.getString(cartKey, "")) + sum)).apply();
+                addItemToMulti(current, itemName, String.valueOf(itemQty), df.format(price), df.format(sum));
+                addToSharedPref();
+                setID();
+            } else {
+                makeToastZero();
+            }
+        } catch (IllegalArgumentException e) {
+            makeToastZero();
+
+        }
+        closeDialog();
+    }
+
+    private void addToSharedPref() {
+        for (String key : items.keys()) {
+            itemsList.edit().putString(key, items.get(key).toString()).apply();
+        }
+        Log.println(Log.INFO, "ItemList", itemsList.getAll().toString());
     }
 }
