@@ -8,8 +8,12 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.viewpager2.widget.ViewPager2;
 
-public class ItemView extends Fragment {
+import com.example.myrestaurant.databinding.CartViewBinding;
+import com.google.android.material.tabs.TabLayout;
+
+public class CartView extends Fragment {
     @Override
     public View onCreateView(
             @NonNull LayoutInflater inflater, ViewGroup container,
@@ -20,23 +24,12 @@ public class ItemView extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ItemTab it = new ItemTab();
-        view.findViewById(R.id.cart_view_clear).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new MainActivity().clearList();
-            }
-        });
-        view.findViewById(R.id.cart_view_list).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                navigateTo(R.id.list_view);
-            }
-        });
+        TabLayout tl = (TabLayout) view.findViewById(R.id.tabMenu);
+        ViewPager2 vp2 = (ViewPager2)
     }
 
     private void navigateTo(int frag) {
-        NavHostFragment.findNavController(ItemView.this)
+        NavHostFragment.findNavController(CartView.this)
                 .navigate(frag);
     }
 

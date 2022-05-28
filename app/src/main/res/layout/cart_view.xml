@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cartScrollView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="600dp"
     android:layout_marginTop="?attr/actionBarSize"
-    android:background="@color/background_trans"
-    tools:context=".CartView">
+    android:background="@color/trans"
+    android:backgroundTint="@color/trans"
+    tools:context=".cart.CartView">
 
     <RelativeLayout
         android:id="@+id/rel"
         android:layout_width="match_parent"
-        android:layout_height="490dp"
+        android:layout_height="match_parent"
         android:background="@color/material_dynamic_secondary90"
         android:gravity="center_horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -37,33 +38,35 @@
                 android:id="@+id/toItemList"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:clickable="true"
-                android:text="@string/cart_activity" >
-            </com.google.android.material.tabs.TabItem>
+                android:onClick="toItem"
+                android:text="@string/cart_activity" />
+
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/toCart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:clickable="true"
+                android:onClick="toCart"
                 android:text="@string/cart" />
-
         </com.google.android.material.tabs.TabLayout>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal|bottom"
-        android:padding="10dp"
-        app:layout_constraintTop_toBottomOf="@id/rel">
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/exitButton"
-            android:layout_width="wrap_content"
+    <Space
+    android:id="@+id/space5"
+    android:layout_below="@id/tabMenu"
+    android:layout_width="match_parent"
+    android:layout_height="5dp"/>
+        <ScrollView
+            android:layout_below="@id/space5"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/exit_button"
-            app:srcCompat="@drawable/ic_close2"
-            tools:ignore="ImageContrastCheck,RedundantDescriptionCheck" />
+            android:layout_centerInParent="true"
+            android:layout_marginTop="2dp">
+
+            <include
+                android:id="@+id/tabFrag"
+                layout="@layout/item_tab_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </ScrollView>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
