@@ -1,9 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    android:label="@string/first_fragment_label"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/FirstFragment">
+    <fragment
+        android:id="@+id/cartView"
+        android:name="com.example.myrestaurant.CartView"
+        android:label="Cart"
+        tools:layout="@layout/cart_view">
+        <action
+            android:id="@+id/action_cartView_to_nav_graph"
+            app:popUpTo="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_cartView_to_itemView"
+            app:destination="@id/itemView" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemView"
+        android:name="com.example.myrestaurant.ItemView"
+        android:label="Items"
+        tools:layout="@layout/list_view">
+        <action
+            android:id="@+id/action_itemView_to_nav_graph"
+            app:popUpTo="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_itemView_to_cartView"
+            app:destination="@id/cartView" />
+    </fragment>
     <fragment
         android:id="@+id/FirstFragment"
         android:name="com.example.myrestaurant.FirstFragment"
@@ -25,8 +50,11 @@
             android:id="@+id/action_FirstFragment_to_pizza"
             app:destination="@id/pizza" />
         <action
-            android:id="@+id/action_FirstFragment_to_cartView"
+            android:id="@+id/action_FirstFragment_to_CartView"
             app:destination="@id/cartView" />
+        <action
+            android:id="@+id/action_FirstFragment_to_itemView"
+            app:destination="@id/itemView" />
     </fragment>
     <fragment
         android:id="@+id/AntiPasto"
@@ -41,9 +69,6 @@
             android:id="@+id/action_AntiPasto_pop"
             app:destination="@id/FirstFragment"
             app:popUpTo="@id/FirstFragment" />
-        <action
-            android:id="@+id/action_AntiPasto_to_cartView"
-            app:destination="@id/cartView" />
     </fragment>
     <fragment
         android:id="@+id/steak"
@@ -58,9 +83,6 @@
             app:destination="@id/FirstFragment"
             app:popUpTo="@id/FirstFragment"
             app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_steak_to_cartView"
-            app:destination="@id/cartView" />
     </fragment>
     <fragment
         android:id="@+id/freshPasta"
@@ -74,9 +96,6 @@
             android:id="@+id/action_freshPasta_pop"
             app:popUpTo="@id/freshPasta"
             app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_freshPasta_to_cartView"
-            app:destination="@id/cartView" />
     </fragment>
     <fragment
         android:id="@+id/tiramisu"
@@ -91,9 +110,6 @@
             app:destination="@id/FirstFragment"
             app:popUpTo="@id/FirstFragment"
             />
-        <action
-            android:id="@+id/action_tiramisu_to_cartView"
-            app:destination="@id/cartView" />
     </fragment>
     <fragment
         android:id="@+id/pizza"
@@ -107,9 +123,6 @@
             android:id="@+id/action_pizza_pop"
             app:popUpTo="@id/FirstFragment"
             />
-        <action
-            android:id="@+id/action_pizza_to_cartView"
-            app:destination="@id/cartView" />
     </fragment>
     <dialog
         android:id="@+id/itemDescription"
@@ -119,16 +132,6 @@
         <action
             android:id="@+id/action_itemDescription_pop"
             app:popUpTo="@id/itemDescription"
-            app:popUpToInclusive="true" />
-    </dialog>
-    <dialog
-        android:id="@+id/cartView"
-        android:name="com.example.myrestaurant.CartView"
-        android:label="CartView"
-        tools:layout="@layout/cartview" >
-        <action
-            android:id="@+id/action_cartView_pop"
-            app:popUpTo="@id/cartView"
             app:popUpToInclusive="true" />
     </dialog>
 </navigation>

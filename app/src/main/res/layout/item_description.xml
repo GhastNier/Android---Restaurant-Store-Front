@@ -84,7 +84,7 @@
         android:layout_below="@id/itemDesc_l"
         android:orientation="horizontal"
         android:textAlignment="center"
-        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
         android:paddingBottom="5dp">
 
         <TextView
@@ -99,16 +99,15 @@
 
         <EditText
             android:id="@+id/qty"
-            android:layout_width="150dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:autofillHints="Quantity"
-            android:elegantTextHeight="true"
             android:hint="@string/how_many"
             android:inputType="number"
             android:minHeight="48dp"
-            android:paddingStart="5dp"
-            android:paddingEnd="5dp"
+            android:paddingStart="45dp"
+            android:paddingEnd="40dp"
             android:shadowColor="@color/white"
             android:singleLine="true"
             android:textAlignment="center"

@@ -1,4 +1,4 @@
-package com.example.myrestaurant.cart.CartItems;
+package com.example.myrestaurant.CartItems;
 
 import static com.example.myrestaurant.MainActivity.items;
 
@@ -24,8 +24,6 @@ public class ItemsTabContent {
      * A map of sample (placeholder) items, by ID.
      */
     public static final Map<String, ItemsTab> ITEM_MAP = new HashMap<String, ItemsTab>();
-
-    private static final int COUNT = 25;
 
     static {
 

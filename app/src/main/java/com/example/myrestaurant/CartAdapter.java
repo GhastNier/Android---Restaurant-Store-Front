@@ -1,4 +1,4 @@
-package com.example.myrestaurant.cart;
+package com.example.myrestaurant;
 
 
 import android.view.LayoutInflater;
@@ -7,8 +7,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.myrestaurant.R;
 
 import java.util.ArrayList;
 
@@ -39,7 +37,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         // Create a new view, which defines the UI of the list item
         View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.cartview, viewGroup, false);
+                .inflate(R.layout.cart_view, viewGroup, false);
 
         return new ViewHolder(view);
     }

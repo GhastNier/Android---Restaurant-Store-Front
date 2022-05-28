@@ -1,4 +1,4 @@
-package com.example.myrestaurant.cart;
+package com.example.myrestaurant;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myrestaurant.cart.CartItems.CartTabContent.CartTab;
+import com.example.myrestaurant.CartItems.CartTabContent.CartTab;
 import com.example.myrestaurant.databinding.CartTabBinding;
 
 import java.util.List;

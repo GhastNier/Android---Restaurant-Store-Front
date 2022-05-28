@@ -4,69 +4,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cartScrollView"
     android:layout_width="match_parent"
-    android:layout_height="600dp"
+    android:layout_height="match_parent"
     android:layout_marginTop="?attr/actionBarSize"
-    android:background="@color/trans"
-    android:backgroundTint="@color/trans"
-    tools:context=".cart.CartView">
+    android:background="@color/black"
+    tools:context=".CartView">
 
     <RelativeLayout
         android:id="@+id/rel"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/material_dynamic_secondary90"
-        android:gravity="center_horizontal"
+        android:layout_height="590dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabMenu"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:backgroundTint="@color/material_on_primary_disabled"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tabIndicatorAnimationDuration="@integer/material_motion_duration_short_1"
-            app:tabRippleColor="@color/secondaryDarkColor"
-            app:tabSelectedTextColor="@color/black"
-            app:tabTextColor="@color/secondaryColor">
-
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/toItemList"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="toItem"
-                android:text="@string/cart_activity" />
-
-
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/toCart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="toCart"
-                android:text="@string/cart" />
-        </com.google.android.material.tabs.TabLayout>
-    <Space
-    android:id="@+id/space5"
-    android:layout_below="@id/tabMenu"
-    android:layout_width="match_parent"
-    android:layout_height="5dp"/>
-        <ScrollView
-            android:layout_below="@id/space5"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/scrollable"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="2dp">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
-            <include
-                android:id="@+id/tabFrag"
-                layout="@layout/item_tab_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" />
-        </ScrollView>
     </RelativeLayout>
+
+    <Button
+        android:id="@+id/cart_view_list"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="180dp"
+        android:layout_height="70dp"
+        android:backgroundTint="@color/secondaryDarkColor"
+        android:drawableLeft="@drawable/ic_list"
+        android:drawableTint="@color/white"
+        android:scaleX="0.8"
+        android:scaleY="0.8"
+        android:text="@string/list"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.973" />
+
+    <Button
+        android:id="@+id/cart_view_clear"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="180dp"
+        android:layout_height="70dp"
+        android:backgroundTint="@color/secondaryDarkColor"
+        android:contentDescription="@string/clear_cart"
+        android:drawableLeft="@drawable/ic_remove_cart_large"
+        android:drawableTint="@color/white"
+        android:scaleX="0.8"
+        android:scaleY="0.8"
+        android:text="@string/clear_cart"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.973" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

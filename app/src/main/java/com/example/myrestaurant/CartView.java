@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-public class ItemView extends Fragment {
+public class CartView extends Fragment {
     @Override
     public View onCreateView(
             @NonNull LayoutInflater inflater, ViewGroup container,
@@ -20,7 +20,7 @@ public class ItemView extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ItemTab it = new ItemTab();
+        CartTab it = new CartTab();
         view.findViewById(R.id.cart_view_clear).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -30,19 +30,18 @@ public class ItemView extends Fragment {
         view.findViewById(R.id.cart_view_list).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                navigateTo(R.id.list_view);
+                navigateTo(R.id.action_cartView_to_itemView);
             }
         });
     }
 
     private void navigateTo(int frag) {
-        NavHostFragment.findNavController(ItemView.this)
+        NavHostFragment.findNavController(CartView.this)
                 .navigate(frag);
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        cartViewBinding = null;
     }
 }

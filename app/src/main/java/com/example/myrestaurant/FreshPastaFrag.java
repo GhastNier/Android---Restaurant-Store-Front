@@ -30,7 +30,6 @@ public class FreshPastaFrag extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        MainActivity.fabVisibilityOn(fresh.fabPasta);
         fresh.firstItemPasta.setOnClickListener(view0 -> {
             setSubItem(30);
             navigateTo(R.id.action_freshPasta_to_itemDescription);
@@ -42,13 +41,6 @@ public class FreshPastaFrag extends Fragment {
         fresh.thirdItemPasta.setOnClickListener(view2 -> {
             setSubItem(32);
             navigateTo(R.id.action_freshPasta_to_itemDescription);
-        });
-        fresh.fabPasta.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                navigateTo(R.id.action_freshPasta_to_cartView);
-                MainActivity.fabVisibilityOff(view);
-            }
         });
     }
 

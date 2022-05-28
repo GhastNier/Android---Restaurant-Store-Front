@@ -1,17 +1,7 @@
 package com.example.myrestaurant;
 
-import static com.example.myrestaurant.GetterAndSetter.getItem;
-import static com.example.myrestaurant.GetterAndSetter.getItemNumber;
-import static com.example.myrestaurant.GetterAndSetter.getSubItem;
-import static com.example.myrestaurant.GetterAndSetter.getTotalValue;
-import static com.example.myrestaurant.GetterAndSetter.setItemNumber;
-import static com.example.myrestaurant.GetterAndSetter.setSubItem;
-import static com.example.myrestaurant.GetterAndSetter.setTotalValue;
-import static com.example.myrestaurant.MainActivity.cart;
-import static com.example.myrestaurant.MainActivity.cartKey;
-import static com.example.myrestaurant.MainActivity.items;
-import static com.example.myrestaurant.MainActivity.itemsList;
-import static com.example.myrestaurant.MainActivity.onCartChange;
+import static com.example.myrestaurant.GetterAndSetter.*;
+import static com.example.myrestaurant.MainActivity.*;
 import static java.lang.String.valueOf;
 
 import android.content.SharedPreferences;
@@ -61,29 +51,13 @@ public class ItemDescription extends DialogFragment {
     }
 
     private void makeToastZero() {
-        Toast.makeText(getDialog().getContext(), "Sorry 0 isn't a valid quantity.", Toast.LENGTH_SHORT).show();
-    }
-
-    private void addItemToMulti(String current, String itemName, String qty, String
-            cost, String sum) {
-        items.put(current, current);
-        items.put(current, itemName);
-        items.put(current, qty);
-        items.put(current, cost);
-        items.put(current, sum);
-        if(getTotalValue() == 0)
-        {
-        setTotalValue(Double.parseDouble(sum));
-        onCartChange();
-        } else {
-            setTotalValue(getTotalValue() + Double.parseDouble(sum));
-            onCartChange();
+        try {
+            Toast.makeText(getDialog().getContext(), "Sorry 0 isn't a valid quantity.", Toast.LENGTH_SHORT).show();
+        } catch (NullPointerException e){
+            Log.println(Log.INFO,"Make Toast Zero =>", e.toString());
         }
     }
-
     public void setDialog(String item, int subItem) {
-        Log.println(Log.INFO, "Item Value: ", valueOf(item));
-        Log.println(Log.INFO, "Sub Item Value: ", valueOf(subItem));
         switch (item) {
             case "anti": {
                 antiPastoSubItem(subItem);
@@ -271,7 +245,7 @@ public class ItemDescription extends DialogFragment {
 
     private void cartSetter() {
         EditText editText = (EditText) idb.qty;
-        SharedPreferences.Editor cartSetter = cart.edit();
+        SharedPreferences.Editor setter = cart.edit();
         try {
             int itemQty = Integer.parseInt(editText.getText().toString());
             if (itemQty > 0) {
@@ -281,24 +255,41 @@ public class ItemDescription extends DialogFragment {
                 Log.println(Log.INFO, "The sum of price * quantity ", valueOf(df.format(sum)));
                 Snackbar.make(getActivity().findViewById(R.id.snack_text), "You've added " + Integer.parseInt(valueOf(itemQty)) + " " + itemName + " to your Cart." +
                         "\nFor a total of " + df.format(sum), Snackbar.LENGTH_LONG).show();
-                cartSetter.putString(cartKey, df.format(Double.parseDouble(cart.getString(cartKey, "")) + sum)).apply();
+                double total = getTotalValue()+sum;
+                setTotalValue(total);
+                setter.putString(cartKey, df.format(total)).apply();
                 addItemToMulti(current, itemName, String.valueOf(itemQty), df.format(price), df.format(sum));
                 addToSharedPref();
                 setID();
             } else {
                 makeToastZero();
             }
-        } catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException|NullPointerException e) {
             makeToastZero();
-
         }
         closeDialog();
     }
-
+    public static void addItemToMulti(String current, String itemName, String qty, String
+            cost, String sum) {
+        items.put(current, current);
+        items.put(current, itemName);
+        items.put(current, qty);
+        items.put(current, cost);
+        items.put(current, sum);
+        if (getTotalValue() == 0) {
+            setTotalValue(Double.parseDouble(sum));
+            new MainActivity().onCartChange();
+        } else {
+            setTotalValue(getTotalValue() + Double.parseDouble(sum));
+            new MainActivity().onCartChange();
+        }
+    }
     private void addToSharedPref() {
-        for (String key : items.keys()) {
-            itemsList.edit().putString(key, items.get(key).toString()).apply();
+        for (String key : items.keySet()) {
+            itemsList.edit().putString(itemKey+key, items.get(key).toString()).apply();
+            itemsList.edit().putString(itemNumKey,String.valueOf(getItemNumber())).apply();
         }
         Log.println(Log.INFO, "ItemList", itemsList.getAll().toString());
     }
+
 }

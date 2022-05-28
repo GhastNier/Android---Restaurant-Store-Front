@@ -30,8 +30,7 @@ public class AntiPasto extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        MainActivity.fabVisibilityOn(ap.fabAnti);
-        ap.firstItemAnti.setOnClickListener(view0 -> {
+                ap.firstItemAnti.setOnClickListener(view0 -> {
             setSubItem(10);
             navigateTo(R.id.action_SecondFragment_to_itemDescription);
         });
@@ -47,13 +46,6 @@ public class AntiPasto extends Fragment {
         ap.fourthItemAnti.setOnClickListener(view3 -> {
             setSubItem(13);
             navigateTo(R.id.action_SecondFragment_to_itemDescription);
-        });
-        ap.fabAnti.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                navigateTo(R.id.action_FirstFragment_to_cartView);
-                MainActivity.fabVisibilityOff(view);
-            }
         });
     }
     private void navigateTo(int frag) {

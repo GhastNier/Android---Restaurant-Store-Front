@@ -1,4 +1,4 @@
-package com.example.myrestaurant.cart.CartItems;
+package com.example.myrestaurant.CartItems;
 
 import java.util.ArrayList;
 import java.util.HashMap;

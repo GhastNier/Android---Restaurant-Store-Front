@@ -1,7 +1,6 @@
 package com.example.myrestaurant;
 
 import static com.example.myrestaurant.GetterAndSetter.setSubItem;
-import static com.example.myrestaurant.MainActivity.fabVisibilityOn;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -31,7 +30,6 @@ public class Tiramisu extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        fabVisibilityOn(dessert.fabTira);
         dessert.firstItemTiramisu.setOnClickListener(view0 -> {
             setSubItem(50);
             navigateTo(R.id.action_tiramisu_to_itemDescription);
@@ -47,13 +45,6 @@ public class Tiramisu extends Fragment {
         dessert.fourthItemTiramisu.setOnClickListener(view3 -> {
             setSubItem(53);
             navigateTo(R.id.action_tiramisu_to_itemDescription);
-        });
-        dessert.fabTira.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                navigateTo(R.id.action_tiramisu_to_cartView);
-                MainActivity.fabVisibilityOff(view);
-            }
         });
     }
     private void navigateTo(int frag) {

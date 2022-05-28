@@ -1,4 +1,4 @@
-package com.example.myrestaurant.cart;
+package com.example.myrestaurant;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,8 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myrestaurant.R;
-import com.example.myrestaurant.cart.CartItems.CartTabContent;
+import com.example.myrestaurant.CartItems.CartTabContent;
 
 /**
  * A fragment representing a list of Items.

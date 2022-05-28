@@ -30,7 +30,6 @@ public class Pizza extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        MainActivity.fabVisibilityOn(pizza.fabPizza);
         pizza.firstItemPizza.setOnClickListener(view0 -> {
             setSubItem(40);
             navigateTo(R.id.action_pizza_to_itemDescription);
@@ -58,13 +57,6 @@ public class Pizza extends Fragment {
         pizza.seventhItemPizza.setOnClickListener(view6 -> {
             setSubItem(46);
             navigateTo(R.id.action_pizza_to_itemDescription);
-        });
-        pizza.fabPizza.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                navigateTo(R.id.action_pizza_to_cartView);
-                MainActivity.fabVisibilityOff(view);
-            }
         });
     }
     public void navigateTo(int frag) {
