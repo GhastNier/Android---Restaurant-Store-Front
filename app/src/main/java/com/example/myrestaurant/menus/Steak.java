@@ -43,18 +43,6 @@ public class Steak extends Fragment {
             setSubItem(22);
             navigateTo(R.id.action_steak_to_itemDescription);
         });
-        binding.getRoot().findViewById(R.id.btn_cart).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                navigateTo(R.id.action_FirstFragment_to_cartTabActivity);
-            }
-        });
-        binding.getRoot().findViewById(R.id.btn_list).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                navigateTo(R.id.action_FirstFragment_to_itemView);
-            }
-        });
     }
     private void navigateTo(int frag) {
         NavHostFragment.findNavController(this)

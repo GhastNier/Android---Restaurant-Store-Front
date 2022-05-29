@@ -1,9 +1,12 @@
 package com.example.myrestaurant.cart.ui.main;
 
+import static com.example.myrestaurant.MainActivity.items;
+
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.myrestaurant.CartLists.ItemsTabContent;
 import com.example.myrestaurant.CartLists.ItemsTabContent.ItemsTab;
 import com.example.myrestaurant.databinding.ItemTabBinding;
 

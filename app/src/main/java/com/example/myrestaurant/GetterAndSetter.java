@@ -5,7 +5,6 @@ import static com.example.myrestaurant.MainActivity.value;
 import static com.example.myrestaurant.MainActivity.valueKey;
 
 public class GetterAndSetter {
-
     private static boolean isLargeLayout;
     private static int subItem;
     private static String item;

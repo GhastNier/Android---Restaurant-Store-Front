@@ -17,9 +17,9 @@ import com.example.myrestaurant.R;
  */
 public class CartTabList extends Fragment {
 
-    // TODO: Customize parameter argument names
+
     private static final String ARG_COLUMN_COUNT = "column-count";
-    // TODO: Customize parameters
+
     private int mColumnCount = 1;
 
     /**
@@ -29,7 +29,6 @@ public class CartTabList extends Fragment {
     public CartTabList() {
     }
 
-    // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
     public static CartTabList newInstance(int columnCount) {
         CartTabList fragment = new CartTabList();
@@ -51,7 +50,7 @@ public class CartTabList extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_cart_tab, container, false);
+        View view = inflater.inflate(R.layout.cart_tab_list, container, false);
         // Set the adapter
         if (view instanceof androidx.recyclerview.widget.RecyclerView) {
             Context context = view.getContext();

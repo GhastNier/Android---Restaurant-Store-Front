@@ -11,22 +11,13 @@ import java.util.Map;
  * Helper class for providing sample content for user interfaces created by
  * Android template wizards.
  * <p>
- *
  */
 public class ItemsTabContent {
 
-    /**
-     * An array of sample (placeholder) items.
-     */
     public static final List<ItemsTab> ITEMS = new ArrayList<ItemsTab>();
-
-    /**
-     * A map of sample (placeholder) items, by ID.
-     */
     public static final Map<String, ItemsTab> ITEM_MAP = new HashMap<String, ItemsTab>();
 
     static {
-
         for (String key : items.keySet()) {
             addItem(createItem(items.get(key).get(0), items.get(key).get(1)));
         }
@@ -50,9 +41,16 @@ public class ItemsTabContent {
         return builder.toString();
     }
 
-    /**
-     * A placeholder item representing a piece of content.
-     */
+    public static void clearContent() {
+        ITEMS.clear();
+        ITEM_MAP.clear();
+    }
+    public static void updateDataSet() {
+        ItemsTabContent.clearContent();
+        for (String key : items.keySet()) {
+            new ItemsTabContent.ItemsTab(items.get(key).get(0), items.get(key).get(1));
+        }
+    }
     public static class ItemsTab {
         public final String id;
         public final String content;
@@ -67,4 +65,6 @@ public class ItemsTabContent {
             return content;
         }
     }
+
+
 }

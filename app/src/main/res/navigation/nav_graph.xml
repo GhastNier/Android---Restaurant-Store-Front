@@ -11,30 +11,6 @@
         android:label="activity_cart_tab"
         tools:layout="@layout/activity_cart_tab" />
     <fragment
-        android:id="@+id/cartView"
-        android:name="com.example.myrestaurant.CartView"
-        android:label="Cart"
-        tools:layout="@layout/cart_view">
-        <action
-            android:id="@+id/action_cartView_to_nav_graph"
-            app:popUpTo="@id/FirstFragment" />
-        <action
-            android:id="@+id/action_cartView_to_itemView"
-            app:destination="@id/itemView" />
-    </fragment>
-    <fragment
-        android:id="@+id/itemView"
-        android:name="com.example.myrestaurant.ItemView"
-        android:label="Items"
-        tools:layout="@layout/list_view">
-        <action
-            android:id="@+id/action_itemView_to_nav_graph"
-            app:popUpTo="@id/FirstFragment" />
-        <action
-            android:id="@+id/action_itemView_to_cartView"
-            app:destination="@id/cartView" />
-    </fragment>
-    <fragment
         android:id="@+id/FirstFragment"
         android:name="com.example.myrestaurant.menus.FirstFragment"
         android:label="@string/first_fragment_label"
@@ -54,14 +30,12 @@
         <action
             android:id="@+id/action_FirstFragment_to_pizza"
             app:destination="@id/pizza" />
-        <action
-            android:id="@+id/action_FirstFragment_to_CartView"
-            app:destination="@id/cartView" />
-        <action
-            android:id="@+id/action_FirstFragment_to_itemView"
-            app:destination="@id/itemView" />
+
         <action
             android:id="@+id/action_FirstFragment_to_cartTabActivity"
+            app:destination="@id/cartTabActivity" />
+        <action
+            android:id="@+id/action_FirstFragment_to_cartTabActivity2"
             app:destination="@id/cartTabActivity" />
     </fragment>
     <fragment
@@ -143,13 +117,12 @@
 
     <fragment
         android:id="@+id/cartTabFrag"
-        android:name="com.example.myrestaurant.cart.ui.main.CartTabFrag"
+        android:name="com.example.myrestaurant.cart.ui.main.CartTab"
         android:label="fragment_cart_tab"
-        tools:layout="@layout/fragment_cart_tab">
+        tools:layout="@layout/cart_tab_list">
         <action
             android:id="@+id/popFirst"
-            app:destination="@id/FirstFragment"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:destination="@id/mainActivity"
             app:popUpTo="@id/FirstFragment" />
         <action
             android:id="@+id/action_cartTabFrag_to_cartTabActivity"
@@ -158,10 +131,30 @@
             android:id="@+id/action_cartTabFrag_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
+    <action
+        android:id="@+id/action_global_cartTabActivity"
+        app:destination="@id/cartTabActivity"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim" />
     <activity
-        android:id="@+id/mainActivity3"
+        android:id="@+id/mainActivity"
         android:name="com.example.myrestaurant.MainActivity"
         android:label="activity_main"
         tools:layout="@layout/activity_main" />
+    <action
+        android:id="@+id/action_global_mainActivity"
+        app:destination="@id/mainActivity" />
+    <fragment
+        android:id="@+id/itemTab"
+        android:name="com.example.myrestaurant.cart.ui.main.ItemTab"
+        android:label="item_tab"
+        tools:layout="@layout/item_tab" >
+        <action
+            android:id="@+id/action_itemTab_to_cartTabActivity"
+            app:destination="@id/cartTabActivity" />
+        <action
+            android:id="@+id/action_itemTab_to_mainActivity"
+            app:destination="@id/mainActivity" />
+    </fragment>
 
 </navigation>

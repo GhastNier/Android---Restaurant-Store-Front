@@ -34,9 +34,9 @@ import com.example.myrestaurant.databinding.ItemDescriptionBinding;
 
 public class ItemDescription extends DialogFragment {
     public ItemDescriptionBinding idb;
+    TextView text1;
     int canOrAdd;
     double price;
-    TextView text1;
     public static final DecimalFormat df = new DecimalFormat("0.00");
 
     @Override

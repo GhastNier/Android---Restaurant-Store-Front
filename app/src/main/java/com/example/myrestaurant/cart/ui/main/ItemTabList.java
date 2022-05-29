@@ -13,23 +13,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myrestaurant.CartLists.ItemsTabContent;
 import com.example.myrestaurant.R;
 
-/**
- * A fragment representing a list of Items.
- */
+
 public class ItemTabList extends Fragment {
 
 
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
-
-    /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
-     */
+    private ItemTabsRecycler itb;
     public ItemTabList() {
     }
 
-    // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
     public static ItemTabList newInstance(int columnCount) {
         ItemTabList fragment = new ItemTabList();
@@ -42,6 +35,7 @@ public class ItemTabList extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
@@ -50,12 +44,17 @@ public class ItemTabList extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.item_tab_list
-                , container, false);
+        View view = inflater.inflate(R.layout.item_tab_list, container, false);
         Context context = view.getContext();
         RecyclerView recyclerView = (RecyclerView) view;
+        itb = new ItemTabsRecycler(ItemsTabContent.ITEMS);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.setAdapter(new ItemTabsRecycler(ItemsTabContent.ITEMS));
+        recyclerView.setAdapter(itb);
         return view;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
     }
 }

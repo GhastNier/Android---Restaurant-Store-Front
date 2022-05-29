@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".cart.ui.main.ItemTab"
-    android:background="@color/material_on_primary_disabled"
+    android:background="@color/black"
     app:layout_anchorGravity="center_horizontal"
     android:orientation="horizontal">
 <androidx.cardview.widget.CardView
@@ -24,13 +24,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="10dp"
-
         android:layout_marginBottom="10dp"
         android:paddingStart="75dp"
         android:paddingEnd="75dp"
         android:fontFamily="sans-serif-condensed-light"
         android:textStyle="bold"
-        android:text="Test"
         android:elegantTextHeight="true"
         android:textColor="@color/white"
         android:textSize="22sp" />

@@ -2,8 +2,6 @@ package com.example.myrestaurant.CartLists;
 
 import static com.example.myrestaurant.MainActivity.items;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,10 +19,7 @@ public class CartTabContent {
     static {
 
         for (String key : items.keySet()) {
-            Log.println(Log.INFO, "ItemList for Key#" + key, items.get(key).get(1));
-            Log.println(Log.INFO, "ItemList for Key#" + key, items.get(key).get(2));
-            Log.println(Log.INFO, "ItemList for Key#" + key, items.get(key).get(3));
-            Log.println(Log.INFO, "ItemList for Key#" + key, items.get(key).get(4));
+
             addItem(createItem(items.get(key).get(1), items.get(key).get(2), items.get(key).get(3), items.get(key).get(4)));
         }
     }

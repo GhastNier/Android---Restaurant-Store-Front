@@ -1,5 +1,6 @@
 package com.example.myrestaurant.cart.ui.main;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ import com.example.myrestaurant.R;
  */
 public class ItemTab extends Fragment {
 
+
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
 
@@ -28,7 +30,8 @@ public class ItemTab extends Fragment {
     public ItemTab() {
     }
 
-    // TODO: Customize parameter initialization
+    private ItemTabsRecycler itb;
+
     @SuppressWarnings("unused")
     public static ItemTab newInstance(int columnCount) {
         ItemTab fragment = new ItemTab();
@@ -36,6 +39,14 @@ public class ItemTab extends Fragment {
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    @Override
+    public void onResume() {
+        super.onResume();
+        itb = new ItemTabsRecycler(ItemsTabContent.ITEMS);
+        itb.notifyDataSetChanged();
     }
 
     @Override
@@ -52,8 +63,12 @@ public class ItemTab extends Fragment {
         View view = inflater.inflate(R.layout.item_tab_list, container, false);
         Context context = view.getContext();
         RecyclerView recyclerView = (RecyclerView) view;
+        itb = new ItemTabsRecycler(ItemsTabContent.ITEMS);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.setAdapter(new ItemTabsRecycler(ItemsTabContent.ITEMS));
+        recyclerView.setAdapter(itb);
+        for (int i = 0;i < itb.getItemCount();i++) {
+            itb.notifyItemInserted(i);
+        }
         return view;
     }
 }

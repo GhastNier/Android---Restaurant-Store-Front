@@ -43,18 +43,6 @@ public class FreshPastaFrag extends Fragment {
             setSubItem(32);
             navigateTo(R.id.action_freshPasta_to_itemDescription);
         });
-        binding.getRoot().findViewById(R.id.btn_cart).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                navigateTo(R.id.action_FirstFragment_to_cartTabActivity);
-            }
-        });
-        binding.getRoot().findViewById(R.id.btn_list).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                navigateTo(R.id.action_FirstFragment_to_itemView);
-            }
-        });
     }
 
     private void navigateTo(int frag) {
