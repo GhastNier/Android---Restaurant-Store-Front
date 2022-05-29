@@ -1,10 +1,10 @@
-package com.example.myrestaurant;
+package com.example.myrestaurant.cart.ui.main;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.myrestaurant.CartItems.ItemsTabContent.ItemsTab;
+import com.example.myrestaurant.CartLists.ItemsTabContent.ItemsTab;
 import com.example.myrestaurant.databinding.ItemTabBinding;
 
 import java.util.List;
@@ -40,12 +40,12 @@ public class ItemTabsRecycler extends androidx.recyclerview.widget.RecyclerView.
     }
 
     public class ViewHolder extends androidx.recyclerview.widget.RecyclerView.ViewHolder {
-                public final TextView mContentView;
+            public final TextView mContentView;
         public ItemsTab mItem;
 
         public ViewHolder(ItemTabBinding binding) {
             super(binding.getRoot());
-            mContentView = binding.content;
+            mContentView = binding.itemListName;
         }
 
         @Override

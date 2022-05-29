@@ -1,4 +1,6 @@
-package com.example.myrestaurant.CartItems;
+package com.example.myrestaurant.CartLists;
+
+import static com.example.myrestaurant.MainActivity.items;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,36 +11,34 @@ import java.util.Map;
  * Helper class for providing sample content for user interfaces created by
  * Android template wizards.
  * <p>
- * TODO: Replace all uses of this class before publishing your app.
+ *
  */
-public class CartTabContent {
+public class ItemsTabContent {
 
     /**
      * An array of sample (placeholder) items.
      */
-    public static final List<CartTab> ITEMS = new ArrayList<CartTab>();
+    public static final List<ItemsTab> ITEMS = new ArrayList<ItemsTab>();
 
     /**
      * A map of sample (placeholder) items, by ID.
      */
-    public static final Map<String, CartTab> ITEM_MAP = new HashMap<String, CartTab>();
-
-    private static final int COUNT = 25;
+    public static final Map<String, ItemsTab> ITEM_MAP = new HashMap<String, ItemsTab>();
 
     static {
-        // Add some sample items.
-        for (int i = 1; i <= COUNT; i++) {
-            addItem(createCartTabItem(i));
+
+        for (String key : items.keySet()) {
+            addItem(createItem(items.get(key).get(0), items.get(key).get(1)));
         }
     }
 
-    private static void addItem(CartTab item) {
+    private static void addItem(ItemsTab item) {
         ITEMS.add(item);
         ITEM_MAP.put(item.id, item);
     }
 
-    private static CartTab createCartTabItem(int position) {
-        return new CartTab(String.valueOf(position), "Item " + position, makeDetails(position));
+    private static ItemsTab createItem(String id, String name) {
+        return new ItemsTab(id, name);
     }
 
     private static String makeDetails(int position) {
@@ -53,15 +53,13 @@ public class CartTabContent {
     /**
      * A placeholder item representing a piece of content.
      */
-    public static class CartTab {
+    public static class ItemsTab {
         public final String id;
         public final String content;
-        public final String details;
 
-        public CartTab(String id, String content, String details) {
+        public ItemsTab(String id, String content) {
             this.id = id;
             this.content = content;
-            this.details = details;
         }
 
         @Override

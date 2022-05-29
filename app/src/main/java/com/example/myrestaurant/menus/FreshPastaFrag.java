@@ -1,4 +1,4 @@
-package com.example.myrestaurant;
+package com.example.myrestaurant.menus;
 
 import static com.example.myrestaurant.GetterAndSetter.setSubItem;
 
@@ -11,11 +11,12 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.myrestaurant.R;
 import com.example.myrestaurant.databinding.FreshPastaBinding;
 
 public class FreshPastaFrag extends Fragment {
 
-    private FreshPastaBinding fresh;
+    private FreshPastaBinding binding;
 
     @Override
     public View onCreateView(
@@ -23,24 +24,36 @@ public class FreshPastaFrag extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        fresh = FreshPastaBinding.inflate(inflater, container, false);
-        return fresh.getRoot();
+        binding = FreshPastaBinding.inflate(inflater, container, false);
+        return binding.getRoot();
 
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        fresh.firstItemPasta.setOnClickListener(view0 -> {
+        binding.firstItemPasta.setOnClickListener(view0 -> {
             setSubItem(30);
             navigateTo(R.id.action_freshPasta_to_itemDescription);
         });
-        fresh.secondItemPasta.setOnClickListener(view1 -> {
+        binding.secondItemPasta.setOnClickListener(view1 -> {
             setSubItem(31);
             navigateTo(R.id.action_freshPasta_to_itemDescription);
         });
-        fresh.thirdItemPasta.setOnClickListener(view2 -> {
+        binding.thirdItemPasta.setOnClickListener(view2 -> {
             setSubItem(32);
             navigateTo(R.id.action_freshPasta_to_itemDescription);
+        });
+        binding.getRoot().findViewById(R.id.btn_cart).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigateTo(R.id.action_FirstFragment_to_cartTabActivity);
+            }
+        });
+        binding.getRoot().findViewById(R.id.btn_list).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigateTo(R.id.action_FirstFragment_to_itemView);
+            }
         });
     }
 
@@ -52,6 +65,6 @@ public class FreshPastaFrag extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        fresh = null;
+        binding = null;
     }
 }

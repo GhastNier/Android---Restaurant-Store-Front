@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.myrestaurant.cart.ui.main.CartTab;
+
 public class CartView extends Fragment {
     @Override
     public View onCreateView(

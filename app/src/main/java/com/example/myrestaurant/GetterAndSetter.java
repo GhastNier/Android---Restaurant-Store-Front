@@ -14,11 +14,16 @@ public class GetterAndSetter {
     public static boolean getLargeLayout() {
         return isLargeLayout;
     }
-
+    private static int mColumnCount = 4;
     public static void setLargeLayout(boolean largeLayout) {
         GetterAndSetter.isLargeLayout = largeLayout;
     }
-
+    public static int getColumnCount() {
+        return mColumnCount;
+    }
+    public static void setmColumnCount(int mColumnCount) {
+        GetterAndSetter.mColumnCount = mColumnCount;
+    }
 
 
     public static int getItemNumber() {

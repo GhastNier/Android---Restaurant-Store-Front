@@ -1,4 +1,4 @@
-package com.example.myrestaurant;
+package com.example.myrestaurant.cart.ui.main;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -7,16 +7,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myrestaurant.CartItems.ItemsTabContent;
+import com.example.myrestaurant.CartLists.ItemsTabContent;
+import com.example.myrestaurant.R;
 
 /**
  * A fragment representing a list of Items.
  */
-public class ItemTabList extends Fragment {
-
+public class ItemTab extends Fragment {
 
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
@@ -25,13 +25,13 @@ public class ItemTabList extends Fragment {
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public ItemTabList() {
+    public ItemTab() {
     }
 
     // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
-    public static ItemTabList newInstance(int columnCount) {
-        ItemTabList fragment = new ItemTabList();
+    public static ItemTab newInstance(int columnCount) {
+        ItemTab fragment = new ItemTab();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
@@ -41,7 +41,6 @@ public class ItemTabList extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
@@ -51,18 +50,10 @@ public class ItemTabList extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.item_tab_list, container, false);
-
-        // Set the adapter
-        if (view instanceof androidx.recyclerview.widget.RecyclerView) {
-            Context context = view.getContext();
-            androidx.recyclerview.widget.RecyclerView recyclerView = (androidx.recyclerview.widget.RecyclerView) view;
-            if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-            }
-            recyclerView.setAdapter(new ItemTabsRecycler(ItemsTabContent.ITEMS));
-        }
+        Context context = view.getContext();
+        RecyclerView recyclerView = (RecyclerView) view;
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.setAdapter(new ItemTabsRecycler(ItemsTabContent.ITEMS));
         return view;
     }
 }

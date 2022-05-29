@@ -1,4 +1,4 @@
-package com.example.myrestaurant;
+package com.example.myrestaurant.menus;
 
 import static com.example.myrestaurant.GetterAndSetter.setSubItem;
 
@@ -11,11 +11,12 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.myrestaurant.R;
 import com.example.myrestaurant.databinding.AntiPastoBinding;
 
 public class AntiPasto extends Fragment {
 
-    private AntiPastoBinding ap;
+    private AntiPastoBinding binding;
 
     @Override
     public View onCreateView(
@@ -23,29 +24,41 @@ public class AntiPasto extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        ap = AntiPastoBinding.inflate(inflater, container, false);
-        return ap.getRoot();
+        binding = AntiPastoBinding.inflate(inflater, container, false);
+        return binding.getRoot();
 
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-                ap.firstItemAnti.setOnClickListener(view0 -> {
+                binding.firstItemAnti.setOnClickListener(view0 -> {
             setSubItem(10);
             navigateTo(R.id.action_SecondFragment_to_itemDescription);
         });
-        ap.secondItemAnti.setOnClickListener(view1 -> {
+        binding.secondItemAnti.setOnClickListener(view1 -> {
             setSubItem(11);
             navigateTo(R.id.action_SecondFragment_to_itemDescription);
         });
-        ap.thirdItemAnti.setOnClickListener(view2 -> {
+        binding.thirdItemAnti.setOnClickListener(view2 -> {
             setSubItem(12);
             navigateTo(R.id.action_SecondFragment_to_itemDescription);
 
         });
-        ap.fourthItemAnti.setOnClickListener(view3 -> {
+        binding.fourthItemAnti.setOnClickListener(view3 -> {
             setSubItem(13);
             navigateTo(R.id.action_SecondFragment_to_itemDescription);
+        });
+        binding.getRoot().findViewById(R.id.btn_cart).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigateTo(R.id.cartTabActivity);
+            }
+        });
+        binding.getRoot().findViewById(R.id.btn_list).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigateTo(R.id.action_FirstFragment_to_cartTabActivity);
+            }
         });
     }
     private void navigateTo(int frag) {
@@ -56,6 +69,6 @@ public class AntiPasto extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ap = null;
+        binding = null;
     }
 }

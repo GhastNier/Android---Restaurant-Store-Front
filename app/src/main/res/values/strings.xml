@@ -8,6 +8,7 @@
     <string name="tiramisu_label">Tiramisu Menu</string>
     <string name="fresh_pasta_label">Fresh Pasta Menu</string>
     <string name="pizza_label">Pizza Menu</string>
+
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
@@ -86,6 +87,7 @@
     <string name="tiramenu">Tiramisu Menu</string>
     <string name="pizza_menu">Pizza Menu</string>
     <string name="exit_button">Exit Button</string>
+
     <string name="element">Element</string>
     <string name="main_menu">Main Menu</string>
     <string name="cart_val_void">Cart Value:</string>
@@ -95,4 +97,7 @@
     <string name="list">List</string>
     <string name="back">Back</string>
 
+    <string name="title_activity_cart_tab">CartTabActivity</string>
+    <string name="tab_text_1">Items</string>
+    <string name="tab_text_2">Cart</string>
 </resources>

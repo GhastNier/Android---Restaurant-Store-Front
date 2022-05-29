@@ -4,12 +4,15 @@ import static com.example.myrestaurant.GetterAndSetter.getItemNumber;
 import static com.example.myrestaurant.GetterAndSetter.getTotalValue;
 import static com.example.myrestaurant.GetterAndSetter.setItemNumber;
 import static com.example.myrestaurant.GetterAndSetter.setLargeLayout;
-import static com.example.myrestaurant.ItemDescription.addItemToMulti;
+import static com.example.myrestaurant.GetterAndSetter.setTotalValue;
+import static com.example.myrestaurant.ItemDescription.df;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     public static SharedPreferences cart, itemsList, value, numKey;
 
     private ActivityMainBinding binding;
-
+    public static TextView text1;
     @Override
     protected void onRestart() {
         super.onRestart();
@@ -50,26 +53,28 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        text1 = (TextView) findViewById(R.id.cart_amount);
         createBinding();
         createItemMap();
         createCartSharedPref();
         Log.v("CartKey Value: ", String.valueOf(Double.parseDouble(cart.getString(cartKey, ""))));
     }
 
-    public void onCartChange() {
-        binding.cartAmount.setText("Cart Value: " + getTotalValue() + "$");
+    public static void onCartChange() {
+        text1.setText("Cart Value: " + df.format(getTotalValue()) + "$");
     }
 
-    public void clearList() {
+    public static void clearList() {
         if (getItemNumber() > 1) {
             value.edit().putString(valueKey, "0.00").apply();
             itemsList.edit().clear().apply();
             items.clear();
+            setTotalValue(0.00);
             onCartChange();
             setItemNumber(1);
-            Toast.makeText(getApplicationContext(), R.string.clear_cart, Toast.LENGTH_LONG).show();
+            Toast.makeText(text1.getContext(), R.string.clear_cart, Toast.LENGTH_LONG).show();
         } else {
-            Toast.makeText(getApplicationContext(), "The cart was already empty", Toast.LENGTH_SHORT).show();
+            Toast.makeText(text1.getContext(), "The cart was already empty", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -116,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
                 String part4 = tempItem[3];
                 String part5 = tempItem[4];
                 Log.println(Log.INFO, "Rebuilt Item", Arrays.toString(tempItem));
-                addItemToMulti(part1, part2, part3, part4, part5);
+                //addItemToMulti(part1, part2, part3, part4, part5);
                 onCartChange();
                 j--;
             }
@@ -125,6 +130,8 @@ public class MainActivity extends AppCompatActivity {
             Log.println(Log.INFO, "Cart was empty", e.toString());
         }
     }
-
+    public void toList(View view){
+        Navigation.findNavController(this,R.id.nav_host_fragment_content_main).navigate(R.id.cartTabActivity);
+    }
 }
 

@@ -1,4 +1,4 @@
-package com.example.myrestaurant;
+package com.example.myrestaurant.menus;
 
 import static com.example.myrestaurant.GetterAndSetter.setSubItem;
 
@@ -11,11 +11,12 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.myrestaurant.R;
 import com.example.myrestaurant.databinding.SteakBinding;
 
 public class Steak extends Fragment {
 
-    private SteakBinding steak;
+    private SteakBinding binding;
 
     @Override
     public View onCreateView(
@@ -23,24 +24,36 @@ public class Steak extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        steak = SteakBinding.inflate(inflater, container, false);
-        return steak.getRoot();
+        binding = SteakBinding.inflate(inflater, container, false);
+        return binding.getRoot();
 
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        steak.firstItemSteak.setOnClickListener(view1 -> {
+        binding.firstItemSteak.setOnClickListener(view1 -> {
             setSubItem(20);
             navigateTo(R.id.action_steak_to_itemDescription);
         });
-        steak.secondItemSteak.setOnClickListener(view12 -> {
+        binding.secondItemSteak.setOnClickListener(view12 -> {
             setSubItem(21);
             navigateTo(R.id.action_steak_to_itemDescription);
         });
-        steak.thirdItemSteak.setOnClickListener(view13 -> {
+        binding.thirdItemSteak.setOnClickListener(view13 -> {
             setSubItem(22);
             navigateTo(R.id.action_steak_to_itemDescription);
+        });
+        binding.getRoot().findViewById(R.id.btn_cart).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigateTo(R.id.action_FirstFragment_to_cartTabActivity);
+            }
+        });
+        binding.getRoot().findViewById(R.id.btn_list).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigateTo(R.id.action_FirstFragment_to_itemView);
+            }
         });
     }
     private void navigateTo(int frag) {
@@ -51,6 +64,6 @@ public class Steak extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        steak = null;
+        binding = null;
     }
 }

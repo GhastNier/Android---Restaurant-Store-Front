@@ -1,4 +1,4 @@
-package com.example.myrestaurant;
+package com.example.myrestaurant.cart.ui.main;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -7,21 +7,20 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myrestaurant.CartItems.CartTabContent;
+import com.example.myrestaurant.CartLists.CartTabContent;
+import com.example.myrestaurant.R;
+import com.example.myrestaurant.databinding.CartTabBinding;
 
 /**
  * A fragment representing a list of Items.
  */
 public class CartTab extends Fragment {
 
-    // TODO: Customize parameter argument names
+    private CartTabBinding cartTabBinding;
     private static final String ARG_COLUMN_COUNT = "column-count";
-    // TODO: Customize parameters
-    private int mColumnCount = 4;
+    private int mColumnCount = 1;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -43,7 +42,6 @@ public class CartTab extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
@@ -53,18 +51,10 @@ public class CartTab extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.cart_tab_list, container, false);
-
-        // Set the adapter
-        if (view instanceof RecyclerView) {
-            Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
-            if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-            }
-            recyclerView.setAdapter(new CartTabRecycler(CartTabContent.ITEMS));
-        }
+        Context context = view.getContext();
+        androidx.recyclerview.widget.RecyclerView recyclerView = (androidx.recyclerview.widget.RecyclerView) view;
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.setAdapter(new CartTabRecycler(CartTabContent.ITEMS));
         return view;
     }
 }
