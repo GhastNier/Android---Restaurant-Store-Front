@@ -11,7 +11,6 @@ import static com.example.myrestaurant.MainActivity.cart;
 import static com.example.myrestaurant.MainActivity.cartKey;
 import static com.example.myrestaurant.MainActivity.items;
 import static com.example.myrestaurant.MainActivity.itemsList;
-import static com.example.myrestaurant.MainActivity.onCartChange;
 import static java.lang.String.valueOf;
 
 import android.content.SharedPreferences;
@@ -22,21 +21,29 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.myrestaurant.databinding.ItemDescriptionBinding;
-import com.google.android.material.snackbar.Snackbar;
 
 public class ItemDescription extends DialogFragment {
     public ItemDescriptionBinding idb;
     int canOrAdd;
     double price;
+    TextView text1;
     public static final DecimalFormat df = new DecimalFormat("0.00");
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        text1 = (TextView) getActivity().findViewById(R.id.cart_amount);
+    }
 
     @Override
     public View onCreateView(
@@ -51,11 +58,11 @@ public class ItemDescription extends DialogFragment {
         super.onViewCreated(view, savedInstanceState);
         setDialog(getItem(), getSubItem());
         idb.addToCart.setOnClickListener(view0 -> {
-            canOrAdd = 0;
+            canOrAdd = 99;
             cartSetter();
         });
         idb.cancel.setOnClickListener(view1 -> {
-            canOrAdd = 1;
+            canOrAdd = -1;
             closeDialog();
         });
     }
@@ -73,11 +80,9 @@ public class ItemDescription extends DialogFragment {
         items.put(current, sum);
         if(getTotalValue() == 0)
         {
-        setTotalValue(Double.parseDouble(sum));
-        onCartChange();
+            setTotalValue(Double.parseDouble(sum));
         } else {
             setTotalValue(getTotalValue() + Double.parseDouble(sum));
-            onCartChange();
         }
     }
 
@@ -247,9 +252,9 @@ public class ItemDescription extends DialogFragment {
 
 
     private void checkCancelOrAdd() {
-        if (canOrAdd == 1) {
+        if (canOrAdd == -1) {
             Toast.makeText(getDialog().getContext(), "The item was not added to your cart.", Toast.LENGTH_LONG).show();
-            canOrAdd = 0;
+            canOrAdd = 99;
         }
     }
 
@@ -279,18 +284,18 @@ public class ItemDescription extends DialogFragment {
                 String current = String.valueOf(getItemNumber());
                 double sum = price * itemQty;
                 Log.println(Log.INFO, "The sum of price * quantity ", valueOf(df.format(sum)));
-                Snackbar.make(getActivity().findViewById(R.id.snack_text), "You've added " + Integer.parseInt(valueOf(itemQty)) + " " + itemName + " to your Cart." +
-                        "\nFor a total of " + df.format(sum), Snackbar.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "You've added " + Integer.parseInt(valueOf(itemQty)) + " " + itemName + " to your Cart." +
+                        "\nFor a total of " + df.format(sum), Toast.LENGTH_SHORT).show();
                 cartSetter.putString(cartKey, df.format(Double.parseDouble(cart.getString(cartKey, "")) + sum)).apply();
                 addItemToMulti(current, itemName, String.valueOf(itemQty), df.format(price), df.format(sum));
                 addToSharedPref();
+                onCartChange();
                 setID();
             } else {
                 makeToastZero();
             }
         } catch (IllegalArgumentException e) {
-            makeToastZero();
-
+            Log.println(Log.INFO,"Illegal Argument", "SO YEAH! "+ e);
         }
         closeDialog();
     }
@@ -300,5 +305,8 @@ public class ItemDescription extends DialogFragment {
             itemsList.edit().putString(key, items.get(key).toString()).apply();
         }
         Log.println(Log.INFO, "ItemList", itemsList.getAll().toString());
+    }
+    public  void onCartChange() {
+        text1.setText("Cart Value: " + df.format(getTotalValue()) + "$");
     }
 }
