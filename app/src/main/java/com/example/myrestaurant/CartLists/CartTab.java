@@ -1,4 +1,4 @@
-package com.example.myrestaurant.cart.ui.main;
+package com.example.myrestaurant.CartLists;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -11,42 +11,34 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myrestaurant.CartLists.ItemsTabContent;
 import com.example.myrestaurant.R;
+import com.example.myrestaurant.databinding.CartTabBinding;
 
 /**
  * A fragment representing a list of Items.
  */
-public class ItemTab extends Fragment {
+public class CartTab extends Fragment {
 
-
+    private CartTabBinding cartTabBinding;
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
+    private RecyclerView mRecyclerView;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public ItemTab() {
+    public CartTab() {
     }
-
-    private ItemTabsRecycler itb;
-
+    private CartTabRecycler ctb;
+    // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
-    public static ItemTab newInstance(int columnCount) {
-        ItemTab fragment = new ItemTab();
+    public static CartTab newInstance(int columnCount) {
+        CartTab fragment = new CartTab();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
         return fragment;
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    @Override
-    public void onResume() {
-        super.onResume();
-        itb = new ItemTabsRecycler(ItemsTabContent.ITEMS);
-        itb.notifyDataSetChanged();
     }
 
     @Override
@@ -56,19 +48,23 @@ public class ItemTab extends Fragment {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
     }
+    @SuppressLint("NotifyDataSetChanged")
+    @Override
+    public void onResume() {
+        super.onResume();
+        CartTabContent.resetCartItemMap();
+        mRecyclerView.getAdapter().notifyDataSetChanged();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.item_tab_list, container, false);
+
+        View view = inflater.inflate(R.layout.cart_tab_list, container, false);
         Context context = view.getContext();
-        RecyclerView recyclerView = (RecyclerView) view;
-        itb = new ItemTabsRecycler(ItemsTabContent.ITEMS);
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.setAdapter(itb);
-        for (int i = 0;i < itb.getItemCount();i++) {
-            itb.notifyItemInserted(i);
-        }
+        mRecyclerView = (androidx.recyclerview.widget.RecyclerView) view;
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
+        mRecyclerView.setAdapter(new CartTabRecycler(CartTabContent.ITEMS));
         return view;
     }
 }

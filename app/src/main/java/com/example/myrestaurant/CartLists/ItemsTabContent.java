@@ -45,12 +45,15 @@ public class ItemsTabContent {
         ITEMS.clear();
         ITEM_MAP.clear();
     }
-    public static void updateDataSet() {
-        ItemsTabContent.clearContent();
+
+    public static void resetItemsItemMap() {
+        ITEMS.clear();
+        ITEM_MAP.clear();
         for (String key : items.keySet()) {
-            new ItemsTabContent.ItemsTab(items.get(key).get(0), items.get(key).get(1));
+            addItem(createItem(items.get(key).get(0), items.get(key).get(1)));
         }
     }
+
     public static class ItemsTab {
         public final String id;
         public final String content;

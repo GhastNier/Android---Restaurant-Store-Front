@@ -7,7 +7,7 @@
     app:startDestination="@id/FirstFragment">
     <activity
         android:id="@+id/cartTabActivity"
-        android:name="com.example.myrestaurant.cart.CartTabActivity"
+        android:name="com.example.myrestaurant.CartTabActivity"
         android:label="activity_cart_tab"
         tools:layout="@layout/activity_cart_tab" />
     <fragment
@@ -117,7 +117,7 @@
 
     <fragment
         android:id="@+id/cartTabFrag"
-        android:name="com.example.myrestaurant.cart.ui.main.CartTab"
+        android:name="com.example.myrestaurant.CartLists.CartTab"
         android:label="fragment_cart_tab"
         tools:layout="@layout/cart_tab_list">
         <action
@@ -146,7 +146,7 @@
         app:destination="@id/mainActivity" />
     <fragment
         android:id="@+id/itemTab"
-        android:name="com.example.myrestaurant.cart.ui.main.ItemTab"
+        android:name="com.example.myrestaurant.CartLists.ItemTab"
         android:label="item_tab"
         tools:layout="@layout/item_tab" >
         <action

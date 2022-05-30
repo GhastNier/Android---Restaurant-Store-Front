@@ -1,4 +1,4 @@
-package com.example.myrestaurant.cart;
+package com.example.myrestaurant;
 
 import static com.example.myrestaurant.GetterAndSetter.getItemNumber;
 import static com.example.myrestaurant.GetterAndSetter.getTotalValue;
@@ -19,10 +19,11 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.myrestaurant.R;
-import com.example.myrestaurant.cart.ui.main.CartTab;
-import com.example.myrestaurant.cart.ui.main.ItemTab;
-import com.example.myrestaurant.cart.ui.main.SectionsPagerAdapter;
+import com.example.myrestaurant.CartLists.CartTab;
+import com.example.myrestaurant.CartLists.CartTabContent;
+import com.example.myrestaurant.CartLists.ItemTab;
+import com.example.myrestaurant.CartLists.ItemsTabContent;
+import com.example.myrestaurant.CartLists.SectionsPagerAdapter;
 import com.example.myrestaurant.databinding.ActivityCartTabBinding;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -49,7 +50,7 @@ public class CartTabActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setBinding();
         setButton();
-        showButtons();
+        setValue();
         navController = Navigation.findNavController(this, R.id.nav_host_fragment_cart_tab);
         fragPager.addFragment(CartTab.newInstance(1), "Items");
         fragPager.addFragment(ItemTab.newInstance(1), "Cart");
@@ -57,6 +58,12 @@ public class CartTabActivity extends AppCompatActivity {
         tabs.setupWithViewPager(viewPager);
         tabs.getTabAt(0).setIcon(R.drawable.ic_list);
         tabs.getTabAt(1).setIcon(R.drawable.ic_cart);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        navController.navigate(R.id.action_global_mainActivity);
     }
 
     @Override
@@ -72,23 +79,27 @@ public class CartTabActivity extends AppCompatActivity {
         viewPager = binding.viewPager;
     }
 
-    public void showButtons() {
-        main.setText(df.format(getTotalValue()));
-        home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                navController.navigate(R.id.action_global_mainActivity);
-            }
-        });
-        clear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clearList();
-                main.setText(df.format(getTotalValue()));
-            }
-        });
+    public void setValue() {
+        main.setText(df.format(getTotalValue()) + getString(R.string.dollar));
     }
 
+    public void clearButton(View view) {
+        clearList();
+        fragPager = new SectionsPagerAdapter(this, getSupportFragmentManager());
+        tabs = binding.tabs;
+        viewPager = binding.viewPager;
+        fragPager.addFragment(ItemTab.newInstance(1),"Items");
+        fragPager.addFragment(CartTab.newInstance(1),"Cart");
+        viewPager.setAdapter(fragPager);
+        tabs.setupWithViewPager(viewPager);
+        tabs.getTabAt(0).setIcon(R.drawable.ic_list);
+        tabs.getTabAt(1).setIcon(R.drawable.ic_cart);
+
+    }
+
+    public void toHome(View view) {
+        navController.navigate(R.id.action_global_mainActivity);
+    }
 
     private void setButton() {
         main = binding.myfab2;
@@ -103,6 +114,9 @@ public class CartTabActivity extends AppCompatActivity {
             items.clear();
             setTotalValue(0.00);
             setItemNumber(1);
+            main.setText("0.00$");
+            CartTabContent.resetCartItemMap();
+            ItemsTabContent.resetItemsItemMap();
             Toast.makeText(this, R.string.clear_cart, Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(this, "The cart was already empty", Toast.LENGTH_SHORT).show();

@@ -1,4 +1,4 @@
-package com.example.myrestaurant.cart.ui.main;
+package com.example.myrestaurant.CartLists;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -14,7 +14,6 @@ import java.util.List;
 public class CartTabRecycler extends RecyclerView.Adapter<CartTabRecycler.ViewHolder> {
 
     private final List<CartTab> mValues;
-
     public CartTabRecycler(List<CartTab> items) {
         mValues = items;
     }
@@ -40,6 +39,8 @@ public class CartTabRecycler extends RecyclerView.Adapter<CartTabRecycler.ViewHo
     public int getItemCount() {
         return mValues.size();
     }
+
+
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final TextView mItemName, mItemPrice,mItemQty,mItemTotal ;

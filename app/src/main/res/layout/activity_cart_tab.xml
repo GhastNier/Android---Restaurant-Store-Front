@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".cart.CartTabActivity">
+    tools:context=".CartTabActivity">
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -27,12 +27,12 @@
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:background="@color/black"
-            app:tabTextColor="@color/material_dynamic_secondary80"
             app:tabIconTint="@color/hint"
             app:tabRippleColor="@color/secondaryDarkColor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            app:tabTextColor="@color/material_dynamic_secondary80" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager
@@ -44,7 +44,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        >
+        android:layout_gravity="bottom|end">
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:layout_alignParentBottom="true"
@@ -61,6 +61,7 @@
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             app:fabSize="mini"
             android:id="@+id/clearcartfab"
+            android:onClick="clearButton"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="10dp"
             android:layout_marginStart="5dp"
@@ -73,18 +74,20 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/toHomeFab"
-            app:fabSize="mini"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_alignParentEnd="true"
+            android:onClick="toHome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@id/clearcartfab"
-            android:src="@drawable/ic_home" />
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/ic_home"
+            app:fabSize="mini" />
 
     </RelativeLayout>
+
     <fragment
         android:id="@+id/nav_host_fragment_cart_tab"
         android:name="androidx.navigation.fragment.NavHostFragment"
