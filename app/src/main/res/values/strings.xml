@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Italian</string>
+    <string name="app_name">An Italian Restaurant</string>
     <string name="action_settings">Cart</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">Main Menu</string>
@@ -61,9 +61,7 @@
     <string name="cart_activity">Item List</string>
     <string name="cart">Cart</string>
     <string name="cart_value">Cart Value: 0.00 <b>$</b></string>
-    <string-array name="cart_history" translatable="false">
-        <item> </item>
-    </string-array>
+
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
     <string name="sync_header">Sync</string>
@@ -92,12 +90,19 @@
     <string name="main_menu">Main Menu</string>
     <string name="cart_val_void">Cart Value:</string>
 
-    <string name="itemname">Item Name</string>
+    <string name="itemname">Item</string>
     <string name="clear">Clear</string>
     <string name="list">List</string>
     <string name="back">Back</string>
 
-    <string name="title_activity_cart_tab">CartTabActivity</string>
+    <string name="title_activity_cart_tab">Cart and Items list</string>
     <string name="tab_text_1">Items</string>
     <string name="tab_text_2">Cart</string>
+    <string name="options">Options</string>
+    <string name="item_cost">Item Cost</string>
+    <string name="total">Total</string>
+    <string name="empty_cart">The Cart is Empty : 0.00$</string>
+    <string name="home">Home</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

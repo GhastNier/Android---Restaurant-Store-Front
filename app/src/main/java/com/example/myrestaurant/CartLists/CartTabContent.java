@@ -2,8 +2,6 @@ package com.example.myrestaurant.CartLists;
 
 import static com.example.myrestaurant.MainActivity.items;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,15 +14,16 @@ public class CartTabContent {
     public static final List<CartTab> ITEMS = new ArrayList<CartTab>();
 
 
-    public static final Map<String, CartTab> ITEM_MAP = new HashMap<String, CartTab>();
+    public static final Map<String, CartTab> CART_MAP = new HashMap<String, CartTab>();
 
     static {
-
         for (String key : items.keySet()) {
-            Log.println(Log.INFO, "ItemList for Key#" + key, items.get(key).get(1));
-            Log.println(Log.INFO, "ItemList for Key#" + key, items.get(key).get(2));
-            Log.println(Log.INFO, "ItemList for Key#" + key, items.get(key).get(3));
-            Log.println(Log.INFO, "ItemList for Key#" + key, items.get(key).get(4));
+            addItem(createItem(items.get(key).get(1), items.get(key).get(2), items.get(key).get(3), items.get(key).get(4)));
+        }
+    }
+
+    public static void initData() {
+        for (String key : items.keySet()) {
             addItem(createItem(items.get(key).get(1), items.get(key).get(2), items.get(key).get(3), items.get(key).get(4)));
         }
     }
@@ -35,13 +34,19 @@ public class CartTabContent {
 
     private static void addItem(CartTab item) {
         ITEMS.add(item);
-        ITEM_MAP.put(item.name, item);
+        CART_MAP.put(item.name, item);
     }
 
     private static CartTab createItem(String s, String s2, String s3, String s4) {
         return new CartTab(s, s2, s3, s4);
     }
-
+    public static void resetCartItemMap(){
+            ITEMS.clear();
+            CART_MAP.clear();
+        for (String key : items.keySet()) {
+            addItem(createItem(items.get(key).get(1), items.get(key).get(2), items.get(key).get(3), items.get(key).get(4)));
+        }
+    }
     private static String makeDetails(int position) {
         StringBuilder builder = new StringBuilder();
         builder.append("Details about Item: ").append(position);

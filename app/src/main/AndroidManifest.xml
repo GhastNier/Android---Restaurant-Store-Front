@@ -7,18 +7,18 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/logo_round"
+        android:icon="@mipmap/logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/logo_round"
         android:supportsRtl="false"
         android:theme="@style/Theme.MyRestaurant"
+        android:zygotePreloadName="@string/app_name"
         tools:targetApi="31">
         <activity
-            android:name=".cart.CartTabActivity"
-            android:exported="true"
+            android:name=".CartTabActivity"
+            android:exported="false"
             android:label="@string/title_activity_cart_tab"
-            android:theme="@style/Theme.MyRestaurant.NoActionBar" >
-        </activity>
+            android:theme="@style/Theme.MyRestaurant.NoActionBar"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -26,7 +26,6 @@
             android:theme="@style/Theme.MyRestaurant.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

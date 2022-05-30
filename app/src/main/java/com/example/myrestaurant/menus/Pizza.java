@@ -59,18 +59,6 @@ public class Pizza extends Fragment {
             setSubItem(46);
             navigateTo(R.id.action_pizza_to_itemDescription);
         });
-        binding.getRoot().findViewById(R.id.btn_cart).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                navigateTo(R.id.action_FirstFragment_to_cartTabActivity);
-            }
-        });
-        binding.getRoot().findViewById(R.id.btn_list).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                navigateTo(R.id.action_FirstFragment_to_itemView);
-            }
-        });
     }
     public void navigateTo(int frag) {
         NavHostFragment.findNavController(this)

@@ -49,13 +49,16 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
+        android:backgroundTint="@color/trans"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="15dp"
+        android:layout_marginHorizontal="10dp"
         android:layout_gravity="bottom|end">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/my_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="true"
             app:srcCompat="@drawable/ic_cart" />
     </RelativeLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

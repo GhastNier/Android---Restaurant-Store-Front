@@ -22,10 +22,9 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.myrestaurant.databinding.ActivityMainBinding;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.common.collect.ListMultimap;
 import com.google.common.collect.MultimapBuilder;
-
-import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,23 +32,31 @@ public class MainActivity extends AppCompatActivity {
     public static final String itemNumKey = "numKey";
     public static final String valueKey = "valueKey";
     public static final String itemKey = "itemsKey";
-
+    private NavController navController;
     public static ListMultimap<String, String> items;
     public static AppBarConfiguration appBarConfiguration;
     public static SharedPreferences cart, itemsList, value, numKey;
 
     private ActivityMainBinding binding;
-    public static TextView text1;
+    TextView text1;
     @Override
     protected void onRestart() {
         super.onRestart();
+        loadCart();
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        text1 = (TextView) findViewById(R.id.cart_amount);
+        onCartChange();
+    }
+
 
     @Override
     protected void onStart() {
         super.onStart();
     }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,14 +64,13 @@ public class MainActivity extends AppCompatActivity {
         createBinding();
         createItemMap();
         createCartSharedPref();
-        Log.v("CartKey Value: ", String.valueOf(Double.parseDouble(cart.getString(cartKey, ""))));
     }
 
-    public static void onCartChange() {
+    public void onCartChange() {
         text1.setText("Cart Value: " + df.format(getTotalValue()) + "$");
     }
 
-    public static void clearList() {
+    public void clearList() {
         if (getItemNumber() > 1) {
             value.edit().putString(valueKey, "0.00").apply();
             itemsList.edit().clear().apply();
@@ -72,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
             setTotalValue(0.00);
             onCartChange();
             setItemNumber(1);
+
             Toast.makeText(text1.getContext(), R.string.clear_cart, Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(text1.getContext(), "The cart was already empty", Toast.LENGTH_SHORT).show();
@@ -88,9 +95,16 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.toolbar);
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupWithNavController(findViewById(R.id.toolbar), navController, appBarConfiguration);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.my_fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_global_cartTabActivity);
+            }
+        });
     }
 
     private void createItemMap() {
@@ -114,24 +128,19 @@ public class MainActivity extends AppCompatActivity {
             }
             for (int i = 1; i < j; i++) {
                 itemsList = getSharedPreferences(itemKey + i, MODE_PRIVATE);
-                String[] tempItem = itemsList.getString(itemKey + i, "").split(",");
-                String part1 = tempItem[0];
-                String part2 = tempItem[1];
-                String part3 = tempItem[2];
-                String part4 = tempItem[3];
-                String part5 = tempItem[4];
-                Log.println(Log.INFO, "Rebuilt Item", Arrays.toString(tempItem));
-                //addItemToMulti(part1, part2, part3, part4, part5);
+                String[] temp = itemsList.getString(itemKey + i, "").split(",");
+                items.put(String.valueOf(i),temp[0]);
+                items.put(String.valueOf(i),temp[1]);
+                items.put(String.valueOf(i),temp[2]);
+                items.put(String.valueOf(i),temp[3]);
+                items.put(String.valueOf(i),temp[4]);
+                Log.println(Log.INFO, "Rebuilt Item", items.get(String.valueOf(i)).toString());
                 onCartChange();
-                j--;
             }
             Log.println(Log.INFO, "Rebuilt Cart", items.toString());
         } catch (NullPointerException e) {
             Log.println(Log.INFO, "Cart was empty", e.toString());
         }
-    }
-    public void toList(View view){
-        Navigation.findNavController(this,R.id.nav_host_fragment_content_main).navigate(R.id.cartTabActivity);
     }
 }
 
