@@ -13,23 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myrestaurant.R;
 
-/**
- * A fragment representing a list of Items.
- */
 public class ItemTab extends Fragment {
-
-
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
+    private RecyclerView mRecyclerView;
 
-    /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
-     */
     public ItemTab() {
     }
-
-    private com.example.myrestaurant.CartLists.ItemTabsRecycler itb;
 
     @SuppressWarnings("unused")
     public static ItemTab newInstance(int columnCount) {
@@ -40,14 +30,6 @@ public class ItemTab extends Fragment {
         return fragment;
     }
 
-    @SuppressLint("NotifyDataSetChanged")
-    @Override
-    public void onResume() {
-        super.onResume();
-        itb = new ItemTabsRecycler(ItemsTabContent.ITEMS);
-        itb.notifyDataSetChanged();
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,18 +38,22 @@ public class ItemTab extends Fragment {
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    @Override
+    public void onResume() {
+        super.onResume();
+        mRecyclerView.getAdapter().notifyDataSetChanged();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.item_tab_list, container, false);
-        Context context = view.getContext();
-        RecyclerView recyclerView = (RecyclerView) view;
-        itb = new ItemTabsRecycler(ItemsTabContent.ITEMS);
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.setAdapter(itb);
-        for (int i = 0;i < itb.getItemCount();i++) {
-            itb.notifyItemInserted(i);
-        }
+            View view = inflater.inflate(R.layout.item_tab_list, container, false);
+            Context context = view.getContext();
+            mRecyclerView = (RecyclerView) view;
+            mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
+            mRecyclerView.setAdapter(new ItemTabsRecycler(TabContent.ITEMS));
+            mRecyclerView.getAdapter().notifyDataSetChanged();
         return view;
     }
 }

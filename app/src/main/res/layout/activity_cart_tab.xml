@@ -47,15 +47,16 @@
         android:layout_gravity="bottom|end">
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
             android:id="@+id/myfab2"
-            android:layout_marginEnd="5dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="15dp"
+
             app:icon="@drawable/ic_pizza_logo" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -63,10 +64,10 @@
             android:id="@+id/clearcartfab"
             android:onClick="clearButton"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="15dp"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@id/myfab2"
@@ -80,9 +81,9 @@
             android:layout_above="@id/clearcartfab"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="3dp"
             android:src="@drawable/ic_home"
             app:fabSize="mini" />
 

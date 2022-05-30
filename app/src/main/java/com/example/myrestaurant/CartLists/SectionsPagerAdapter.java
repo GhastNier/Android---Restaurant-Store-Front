@@ -38,7 +38,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         if(position == 0){
             return ItemTab.newInstance(1);
-        } else return CartTab.newInstance(4);
+        } else return CartTab.newInstance(1);
     }
 
     @Nullable

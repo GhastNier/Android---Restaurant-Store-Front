@@ -9,8 +9,6 @@ import static com.example.myrestaurant.GetterAndSetter.setSubItem;
 import static com.example.myrestaurant.GetterAndSetter.setTotalValue;
 import static com.example.myrestaurant.MainActivity.cart;
 import static com.example.myrestaurant.MainActivity.cartKey;
-import static com.example.myrestaurant.MainActivity.items;
-import static com.example.myrestaurant.MainActivity.itemsList;
 import static java.lang.String.valueOf;
 
 import android.content.SharedPreferences;
@@ -25,43 +23,36 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.myrestaurant.CartLists.TabContent;
 import com.example.myrestaurant.databinding.ItemDescriptionBinding;
 
 public class ItemDescription extends DialogFragment {
-    public ItemDescriptionBinding idb;
-    TextView text1;
+    public ItemDescriptionBinding binding;
     int canOrAdd;
     double price;
     public static final DecimalFormat df = new DecimalFormat("0.00");
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        text1 = (TextView) getActivity().findViewById(R.id.cart_amount);
-    }
 
     @Override
     public View onCreateView(
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
-        idb = ItemDescriptionBinding.inflate(inflater, container, false);
-        return idb.getRoot();
+        binding = ItemDescriptionBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setDialog(getItem(), getSubItem());
-        idb.addToCart.setOnClickListener(view0 -> {
+        binding.addToCart.setOnClickListener(view0 -> {
             canOrAdd = 99;
             cartSetter();
         });
-        idb.cancel.setOnClickListener(view1 -> {
+        binding.cancel.setOnClickListener(view1 -> {
             canOrAdd = -1;
             closeDialog();
         });
@@ -69,21 +60,6 @@ public class ItemDescription extends DialogFragment {
 
     private void makeToastZero() {
         Toast.makeText(getDialog().getContext(), "Sorry 0 isn't a valid quantity.", Toast.LENGTH_SHORT).show();
-    }
-
-    private void addItemToMulti(String current, String itemName, String qty, String
-            cost, String sum) {
-        items.put(current, current);
-        items.put(current, itemName);
-        items.put(current, qty);
-        items.put(current, cost);
-        items.put(current, sum);
-        if(getTotalValue() == 0)
-        {
-            setTotalValue(Double.parseDouble(sum));
-        } else {
-            setTotalValue(getTotalValue() + Double.parseDouble(sum));
-        }
     }
 
     public void setDialog(String item, int subItem) {
@@ -109,6 +85,14 @@ public class ItemDescription extends DialogFragment {
                 break;
             }
         }
+    }
+
+    private void dialogValues(String itemName, String iDesc, String iPrice, int image) {
+        price = Double.parseDouble(iPrice);
+        binding.itemImg.setImageDrawable(ContextCompat.getDrawable(binding.getRoot().getContext(), image));
+        binding.itemName.setText(itemName);
+        binding.itemDesc.setText(iDesc);
+        binding.itemCost.setText(iPrice);
     }
 
     private void antiPastoSubItem(int subItem) {
@@ -235,32 +219,17 @@ public class ItemDescription extends DialogFragment {
         }
     }
 
-    private void dialogValues(String itemName, String iDesc, String iPrice, int image) {
-        price = Double.parseDouble(iPrice);
-        idb.itemImg.setImageDrawable(ContextCompat.getDrawable(idb.getRoot().getContext(), image));
-        idb.itemName.setText(itemName);
-        idb.itemDesc.setText(iDesc);
-        idb.itemCost.setText(iPrice);
-    }
-
     public void closeDialog() {
         navigateTo(R.id.action_itemDescription_pop);
         setSubItem(-1);
-
         checkCancelOrAdd();
     }
-
 
     private void checkCancelOrAdd() {
         if (canOrAdd == -1) {
             Toast.makeText(getDialog().getContext(), "The item was not added to your cart.", Toast.LENGTH_LONG).show();
             canOrAdd = 99;
         }
-    }
-
-    private String setID() {
-        setItemNumber(getItemNumber()+1);
-        return valueOf(getItemNumber());
     }
 
     private void navigateTo(int frag) {
@@ -271,42 +240,41 @@ public class ItemDescription extends DialogFragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        idb = null;
+        binding = null;
     }
 
     private void cartSetter() {
-        EditText editText = (EditText) idb.qty;
+        EditText editText = (EditText) binding.qty;
         SharedPreferences.Editor cartSetter = cart.edit();
         try {
             int itemQty = Integer.parseInt(editText.getText().toString());
             if (itemQty > 0) {
-                String itemName = idb.itemName.getText().toString();
-                String current = String.valueOf(getItemNumber());
+                String itemName = binding.itemName.getText().toString();
                 double sum = price * itemQty;
-                Log.println(Log.INFO, "The sum of price * quantity ", valueOf(df.format(sum)));
                 Toast.makeText(getContext(), "You've added " + Integer.parseInt(valueOf(itemQty)) + " " + itemName + " to your Cart." +
                         "\nFor a total of " + df.format(sum), Toast.LENGTH_SHORT).show();
                 cartSetter.putString(cartKey, df.format(Double.parseDouble(cart.getString(cartKey, "")) + sum)).apply();
-                addItemToMulti(current, itemName, String.valueOf(itemQty), df.format(price), df.format(sum));
-                addToSharedPref();
-                onCartChange();
-                setID();
+                new TabContent.TabItems(getItemNumber(), itemName, String.valueOf(itemQty), df.format(price), df.format(sum));
+                cartUpdate(sum);
+                setItemNumber(getItemNumber() + 1);
             } else {
                 makeToastZero();
             }
         } catch (IllegalArgumentException e) {
-            Log.println(Log.INFO,"Illegal Argument", "SO YEAH! "+ e);
+            Log.println(Log.INFO, "Illegal Argument", "SO YEAH! " + e);
         }
         closeDialog();
     }
 
-    private void addToSharedPref() {
-        for (String key : items.keys()) {
-            itemsList.edit().putString(key, items.get(key).toString()).apply();
-        }
-        Log.println(Log.INFO, "ItemList", itemsList.getAll().toString());
+    private void cartUpdate(double sum){
+        setTotalValue(getTotalValue() + sum);
+        TextView text1 = getActivity().findViewById(R.id.cart_amount);
+        StringBuilder builder = new StringBuilder();
+        builder.append(getString(R.string.cart_val_void))
+                .append(" ")
+                .append(df.format(getTotalValue()))
+                .append(getString(R.string.dollar));
+        text1.setText(builder.toString());
     }
-    public  void onCartChange() {
-        text1.setText("Cart Value: " + df.format(getTotalValue()) + "$");
-    }
+
 }

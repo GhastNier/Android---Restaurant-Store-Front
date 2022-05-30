@@ -9,9 +9,11 @@
     app:layout_anchorGravity="center_horizontal"
     android:orientation="horizontal">
 <androidx.cardview.widget.CardView
+    android:id="@+id/item_card"
     android:backgroundTint="@color/secondaryDarkColor"
     android:layout_width="match_parent"
     app:cardCornerRadius="10dp"
+    android:clickable="true"
     android:layout_marginHorizontal="5dp"
     android:layout_height="wrap_content"
     android:layout_marginVertical="5dp"

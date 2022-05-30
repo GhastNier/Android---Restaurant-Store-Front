@@ -12,26 +12,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myrestaurant.R;
-import com.example.myrestaurant.databinding.CartTabBinding;
 
-/**
- * A fragment representing a list of Items.
- */
 public class CartTab extends Fragment {
-
-    private CartTabBinding cartTabBinding;
+    public static final String ARG_VIEW_TYPE = "view-type";
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
+
     private RecyclerView mRecyclerView;
 
-    /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
-     */
     public CartTab() {
     }
-    private CartTabRecycler ctb;
-    // TODO: Customize parameter initialization
+
     @SuppressWarnings("unused")
     public static CartTab newInstance(int columnCount) {
         CartTab fragment = new CartTab();
@@ -48,11 +39,11 @@ public class CartTab extends Fragment {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
     }
+
     @SuppressLint("NotifyDataSetChanged")
     @Override
     public void onResume() {
         super.onResume();
-        CartTabContent.resetCartItemMap();
         mRecyclerView.getAdapter().notifyDataSetChanged();
     }
 
@@ -62,9 +53,11 @@ public class CartTab extends Fragment {
 
         View view = inflater.inflate(R.layout.cart_tab_list, container, false);
         Context context = view.getContext();
-        mRecyclerView = (androidx.recyclerview.widget.RecyclerView) view;
+
+        mRecyclerView = (RecyclerView) view;
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
-        mRecyclerView.setAdapter(new CartTabRecycler(CartTabContent.ITEMS));
+        mRecyclerView.setAdapter(new CartTabRecycler(TabContent.ITEMS));
+
         return view;
     }
 }

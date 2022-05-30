@@ -1,5 +1,6 @@
 package com.example.myrestaurant.menus;
 
+import static com.example.myrestaurant.GetterAndSetter.setItem;
 import static com.example.myrestaurant.GetterAndSetter.setSubItem;
 
 import android.os.Bundle;
@@ -31,6 +32,7 @@ public class Pizza extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        setItem("pizza");
         binding.firstItemPizza.setOnClickListener(view0 -> {
             setSubItem(40);
             navigateTo(R.id.action_pizza_to_itemDescription);

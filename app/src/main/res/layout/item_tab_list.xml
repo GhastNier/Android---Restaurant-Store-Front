@@ -10,5 +10,5 @@
     android:background="@color/black"
     android:textAlignment="center"
     app:layoutManager="LinearLayoutManager"
-    tools:context=".CartLists.ItemTab"
+    tools:context=".CartLists.CartTab"
     tools:listitem="@layout/item_tab" />

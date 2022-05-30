@@ -1,5 +1,6 @@
 package com.example.myrestaurant.menus;
 
+import static com.example.myrestaurant.GetterAndSetter.setItem;
 import static com.example.myrestaurant.GetterAndSetter.setSubItem;
 
 import android.os.Bundle;
@@ -31,7 +32,8 @@ public class AntiPasto extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-                binding.firstItemAnti.setOnClickListener(view0 -> {
+        setItem("anti");
+            binding.firstItemAnti.setOnClickListener(view0 -> {
             setSubItem(10);
             navigateTo(R.id.action_SecondFragment_to_itemDescription);
         });
